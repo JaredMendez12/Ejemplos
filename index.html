@@ -368,6 +368,25 @@ body.proj .pstep{display:flex}
 body.proj main{zoom:1.16}
 body.proj footer{display:none}
 @media (max-width:640px){body.proj main{zoom:1}}
+
+/* ===== v3: solo simulación + datos + cómo solucionarlo ===== */
+.view:not(#v-inicio)>.lead,.view:not(#v-inicio)>.kicker{display:none}
+.solo{display:grid;gap:14px;justify-items:center;margin-top:16px}
+.solo>.stack{width:100%;max-width:520px;display:grid;gap:12px}
+.mis{font-size:14px;color:var(--muted);text-align:center;margin:0}
+.res{border-radius:12px;padding:10px 14px;font-size:14.5px}
+.res.bad{background:var(--red-t);border:1px solid #F2B8B5;color:#8C1D18}
+.res.good{background:var(--green-t);border:1px solid #B7DFC4;color:#0F4F25}
+.fb{display:grid;gap:10px;justify-items:center;width:100%}
+.fbb{width:100%;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:6px;font-size:14px}
+.fb.ok .fbb{border-color:#B7DFC4;background:#F6FBF8}
+.crumb{color:var(--muted);font-weight:600}.goal{font-weight:700}
+.lnk{border:0;background:none;color:#0B57D0;font-weight:700;text-decoration:underline;padding:0;font-size:inherit}
+.zcs{display:flex;gap:6px;flex-wrap:wrap}.zc{font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:#FDECEA;color:#8C1D18}.zc.on{background:#E6F4EA;color:#0F4F25}
+.hres{display:flex;gap:28px}.hres b{display:block;font-size:48px;line-height:1}
+.lvlw{margin-top:12px;font-size:14px}
+#h-phone{display:grid;gap:12px;justify-items:center;margin-top:14px}
+#h-phone[hidden]{display:none}
 </style>
 </head>
 <body>
@@ -403,13 +422,10 @@ body.proj footer{display:none}
 <section id="v-truco" class="view" hidden aria-labelledby="t-truco">
   <p class="kicker">Simulación 2 · Engaños</p>
   <h2 id="t-truco">Detecta el truco</h2>
-  <p class="lead">Cinco situaciones reales, una por una (las dos últimas son extra). Actúa como lo harías con prisa y después te mostramos dónde estaba la trampa.</p>
+  <p class="lead">Tres situaciones reales, una por una. Actúa como lo harías con prisa y después te mostramos dónde estaba la trampa.</p>
   <div class="tabs" id="tabs2" role="tablist" aria-label="Escenarios"></div>
   <ol class="pstep" id="ps-truco" aria-label="Pasos"></ol>
-  <div class="cols">
-    <div class="phone"><div class="screen" id="scr2"></div></div>
-    <div class="stack" id="side2" aria-live="polite"></div>
-  </div>
+  <div class="solo"><div class="phone"><div class="screen" id="scr2"></div></div><div class="stack" id="side2" aria-live="polite"></div></div>
 </section>
 
 <section id="v-huella" class="view" hidden aria-labelledby="t-huella">
@@ -422,7 +438,6 @@ body.proj footer{display:none}
 <section id="v-resumen" class="view" hidden aria-labelledby="t-resumen">
   <p class="kicker">Tu resultado</p>
   <h2 id="t-resumen">Lo que supieron de ti</h2>
-  <p class="lead">Un resumen de lo que probaste en las tres simulaciones y de lo que ya cerraste en Ajustes. Se borra al cerrar la pestaña.</p>
   <div id="sum"></div>
 </section>
 </main>
@@ -448,10 +463,16 @@ const SU={
  loc:{t:'Bloquear la ubicación del navegador',path:{android:['Ajustes','Ubicación','Permisos de las apps','Chrome'],ios:['Ajustes','Privacidad y seguridad','Localización','Sitios web de Safari']},goal:{android:'Elige “No permitir”.',ios:'Elige “Nunca”.'},note:'Práctica simulada: tu celular real no cambia. Los nombres pueden variar según marca y versión.'},
  cookies:{t:'Borrar cookies y datos de sitios',path:{android:['Chrome','Ajustes','Privacidad y seguridad','Borrar datos de navegación'],ios:['Ajustes','Safari','Borrar historial y datos de sitios web']},goal:{android:'Marca “Cookies y datos de sitios” y toca Borrar datos.',ios:'Toca “Borrar historial y datos de sitios web” y confirma.'},note:'Este borrado sí es real, pero solo sobre el ID de esta demo.'},
  browser:{t:'Bloquear el rastreo entre sitios',path:{android:['Chrome','Ajustes','Privacidad y seguridad','Cookies de terceros'],ios:['Ajustes','Safari','Privacidad y seguridad']},goal:{android:'Elige “Bloquear cookies de terceros”.',ios:'Activa “Evitar el rastreo entre sitios”.'},note:'Práctica simulada. En tu equipo real revisa cómo están ya estos ajustes.'},
- fp:{t:'Reducir tu huella digital',path:{android:['Firefox','Ajustes','Navegación privada y seguridad','Protección de rastreo mejorada'],ios:['Ajustes','Safari','Avanzado','Protección avanzada contra el rastreo y la huella digital']},goal:{android:'Elige “Estricta”.',ios:'Elige “Todas las navegaciones”.'},note:'Práctica simulada. Los nombres exactos cambian con la versión del sistema.'}
+ fp:{t:'Reducir tu huella digital',path:{android:['Firefox','Ajustes','Navegación privada y seguridad','Protección de rastreo mejorada'],ios:['Ajustes','Safari','Avanzado','Protección avanzada contra el rastreo y la huella digital']},goal:{android:'Elige “Estricta”.',ios:'Elige “Todas las navegaciones”.'},note:'x'},
+ sms:{t:'Reportar y bloquear el mensaje',nosim:1,path:{android:['Mensajes','Mantén pulsado el mensaje','Denunciar spam y bloquear'],ios:['Mensajes','Abre la conversación','Reportar mensaje basura › Bloquear remitente']},goal:{android:'No toques el enlace: entra por la app oficial.',ios:'No toques el enlace: entra por la app oficial.'}},
+ scare:{t:'Cerrar una alerta falsa de virus',nosim:1,path:{android:['Chrome','Contador de pestañas (arriba a la derecha)','✕ en la pestaña'],ios:['Safari','Botón de pestañas (abajo a la derecha)','✕ en la pestaña']},goal:{android:'No toques nada de la alerta.',ios:'No toques nada de la alerta.'}},
+ qr:{t:'Revisar un QR antes de abrirlo',nosim:1,path:{android:['Cámara','Apunta al código','Lee la dirección completa antes de tocar “Abrir enlace”'],ios:['Cámara','Apunta al código','Lee la dirección antes de tocar el aviso amarillo']},goal:{android:'Si el QR es un sticker encimado o no reconoces el dominio, no lo abras.',ios:'Si el QR es un sticker encimado o no reconoces el dominio, no lo abras.'}},
+ wifi:{t:'Olvidar una red WiFi falsa',nosim:1,path:{android:['Ajustes','Red e internet','Wi-Fi','⚙ junto a la red','Olvidar'],ios:['Ajustes','Wi-Fi','ⓘ junto a la red','Olvidar esta red']},goal:{android:'Pregunta al personal el nombre exacto de la red.',ios:'Pregunta al personal el nombre exacto de la red.'}}
 };
-function closeCard(k,extra=''){const u=SU[k],done=DONE[k]();
-  return `<div class="card cl ${done?'ok':''}"><span class="tag g">Ciérralo en 1 minuto · ${IOS()?'iPhone':'Android'}</span><h3 style="margin-top:8px">${u.t}</h3><ol class="steps">${u.path[OS].map(x=>`<li>${x}</li>`).join('')}<li><b>${u.goal[OS]}</b></li></ol>${done?'<p class="okline">✓ Ajuste practicado</p>':''}<div class="btn-row"><button class="btn pri" type="button" data-open="${k}">${done?'Practicar otra vez':'Practicar en Ajustes (simulado)'}</button>${extra}</div><p class="small" style="margin-top:8px;font-size:13px">${u.note}</p></div>`}
+const FX={};const SCK=['browser','sms','scare','qr','wifi'];
+const DN=k=>DONE[k]?DONE[k]():false;
+function closeCard(k,extra=''){const u=SU[k],open=!!FX[k],done=DN(k),cl=(typeof RV!=='undefined'&&SCK.indexOf(k)>=0)?RV[SCK.indexOf(k)].clues:null;
+  return `<div class="fb ${done?'ok':''}"><div class="btn-row" style="margin:0;justify-content:center"><button class="btn ${open?'':'pri'}" type="button" data-fix="${k}" aria-expanded="${open}">${open?'Ocultar':'Cómo solucionarlo'}</button>${extra}</div>${open?`<div class="fbb"><b>${u.t}</b><div class="crumb">${u.path[OS].join(' › ')}</div><div class="goal">${u.goal[OS]}</div>${cl?`<ul class="clues">${cl.map(c=>`<li>${c}</li>`).join('')}</ul>`:''}${done?'<div class="okline">✓ Ajuste aplicado</div>':''}${u.nosim?'':`<button class="btn pri" type="button" data-open="${k}">${done?'Practicar otra vez':'Ver en Ajustes (simulado)'}</button>`}</div>`:''}</div>`}
 
 /* ---------- rutas ---------- */
 const VIEWS=['inicio','rastreo','truco','huella','resumen'];
@@ -480,12 +501,30 @@ function stepIdx(){
   return 0}
 function steps(){const el=$('#ps-'+CUR);if(!el)return;const key=CUR==='rastreo'?'rastreo'+L.tab:CUR,i=stepIdx();el.innerHTML=PSTEPS[key].map((t,k)=>`<li class="${k<i?'d':k===i?'c':''}"><b>${k+1}</b>${t}</li>`).join('')}
 
+/* ---------- datos reales del dispositivo (solo locales) ---------- */
+let BAT=null;
+try{if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>{BAT={l:Math.round(b.level*100),c:b.charging}};u();b.addEventListener('levelchange',u);b.addEventListener('chargingchange',u)}).catch(()=>{})}catch(e){}
+function realOS(){const u=navigator.userAgent;let m;
+ if(m=u.match(/Android ([\d.]+)/))return 'Android '+m[1].split('.')[0];
+ if(m=u.match(/OS (\d+)[_\d]* like Mac/))return 'iOS '+m[1];
+ if(/Windows NT 10/.test(u))return 'Windows 10/11';if(/Mac OS X/.test(u))return 'macOS';if(/CrOS/.test(u))return 'ChromeOS';if(/Linux/.test(u))return 'Linux';return '—'}
+function realBrowser(){const m=navigator.userAgent.match(/(Firefox|Edg|OPR|CriOS|FxiOS|Chrome|Version)\/([\d.]+)/);if(!m)return '—';let n=m[1];if(n==='Version')n='Safari';if(n==='Edg')n='Edge';if(n==='OPR')n='Opera';if(n==='CriOS')n='Chrome';if(n==='FxiOS')n='Firefox';return n+' '+m[2].split('.')[0]}
+function devRows(){const cn=navigator.connection||{};return [['Sistema',realOS()],['Navegador',realBrowser()],['Idioma',navigator.language||'—'],['Zona horaria',Intl.DateTimeFormat().resolvedOptions().timeZone||'—'],['Pantalla',`${screen.width}×${screen.height} · ${devicePixelRatio}x`],['Red',cn.effectiveType?`${cn.effectiveType}${cn.downlink?' · '+cn.downlink+' Mbps':''}${cn.rtt?' · '+cn.rtt+' ms':''}`:'no expuesta'],['Batería',BAT?BAT.l+'%'+(BAT.c?' · cargando':''):'no expuesta'],['Hora local',new Date().toLocaleTimeString()]]}
+const recBox=(t,rows)=>`<div class="panel"><h3>${t}</h3><div class="meta">se lee en tu navegador · no se envía a ningún servidor</div><div class="kv">${rows.map(([k,v])=>`<b>${k}</b><span>${String(v).replace(/</g,'&lt;')}</span>`).join('')}</div></div>`;
+const mask1=n=>n?'•'.repeat(Math.min(n,12))+` · ${n} caracteres`:'vacío';
+const rid=()=>Math.random().toString(16).slice(2,10).toUpperCase();
+const LABC=['lab_ad_id','lab_analytics','lab_partners'];
+const LAB={};
+const setLab=(n,v)=>{LAB[n]=v;try{document.cookie=`${n}=${v}; max-age=3600; path=/; SameSite=Lax`}catch(e){}};
+const clrLab=()=>LABC.forEach(n=>{delete LAB[n];try{document.cookie=n+'=; max-age=0; path=/'}catch(e){}});
+
 /* ---------- piezas comunes ---------- */
 const SIGN='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20h20L22 4z" opacity=".9"/></svg>';
 const WIFI='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20l-9-11a14 14 0 0 1 18 0z"/></svg>';
 const BATA='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/></svg>';
-const BATI='<svg class="bt" viewBox="0 0 28 14" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="13" rx="4" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="20" height="10" rx="2.5" fill="currentColor"/><rect x="25" y="4.5" width="2" height="5" rx="1" fill="currentColor" opacity=".5"/></svg>';
-const SB=(c='#202124')=>IOS()?`<div class="sb i" style="color:${c}"><span>9:41</span><span class="r">${SIGN}${WIFI}${BATI}</span></div>`:`<div class="sb a" style="color:${c}"><span>9:41</span><span class="r">${WIFI}${SIGN}${BATA}</span></div>`;
+const BATI=()=>`<svg class="bt" viewBox="0 0 28 14" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="13" rx="4" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="${Math.max(2,Math.round(20*(BAT?BAT.l/100:.8)))}" height="10" rx="2.5" fill="currentColor"/><rect x="25" y="4.5" width="2" height="5" rx="1" fill="currentColor" opacity=".5"/></svg>`;
+const clk=()=>{const d=new Date();return d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')};
+const SB=(c='#202124')=>IOS()?`<div class="sb i" style="color:${c}"><span>${clk()}</span><span class="r">${SIGN}${WIFI}${BATI()}</span></div>`:`<div class="sb a" style="color:${c}"><span>${clk()}</span><span class="r">${BAT?`<small>${BAT.l}%</small>`:''}${WIFI}${SIGN}${BATA}</span></div>`;
 const GEST=(c='#202124')=>`<div class="gest" style="color:${c}"><i></i></div>`;
 const IC={
  warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
@@ -535,7 +574,7 @@ function setFp(){
   if(IOS())return `${iTop('Safari','Avanzado')}<div class="iscr"><div class="igh">Protección avanzada contra el rastreo y la huella digital</div><div class="ig">${iCk('fpi','none',S.fpi,'Ninguna')}${iCk('fpi','priv',S.fpi,'Solo navegación privada')}${iCk('fpi','all',S.fpi,'Todas las navegaciones')}</div><div class="igf">Reduce los datos que tu navegador revela para identificarte.</div></div>${doneBar('fp')}`;
   return `${aTop('Protección de rastreo','Firefox · Navegación privada y seguridad')}<div class="ascr"><div class="ah">Protección de rastreo mejorada</div>${aRd('fpa','std',S.fpa,'Estándar','Bloquea rastreadores de redes sociales y anuncios entre sitios.')}${aRd('fpa','strict',S.fpa,'Estricta','Bloquea más rastreadores y reduce tu huella digital. Algunos sitios pueden fallar.')}${aRd('fpa','custom',S.fpa,'Personalizada')}</div>${doneBar('fp')}`}
 function drawSet(){const el=$('#'+SETV.host);if(!el)return;paint(el,{loc:setLoc,cookies:setCookies,browser:setBrowser,fp:setFp}[SETV.k](),IOS()?'#F2F2F7':'#F6F2F9')}
-function openSet(k){SETV.k=k;SETV.host={rastreo:'scr1',truco:'scr2',huella:'scr3'}[CUR];SETV.confirm=false;SETV.msg='';render();const e=$('#'+SETV.host);if(e&&innerWidth<900)e.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})}
+function openSet(k){FX[k]=true;SETV.k=k;SETV.host={rastreo:'scr1',truco:'scr2',huella:'scr3'}[CUR];SETV.confirm=false;SETV.msg='';render();const e=$('#'+SETV.host);if(e&&innerWidth<900)e.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})}
 async function sAct(b){const a=b.dataset.s,n=b.dataset.n,v=b.dataset.v;
   if(a==='back'){SETV.k=null;SETV.confirm=false;SETV.msg='';return render()}
   if(a==='set')S[n]=v;
@@ -550,7 +589,7 @@ async function sAct(b){const a=b.dataset.s,n=b.dataset.n,v=b.dataset.v;
 async function resetView(v){
   SETV.k=null;SETV.confirm=false;SETV.msg='';
   if(v==='rastreo'||v==='all'){Object.assign(L,{st:'idle',pos:null,err:'',demo:false,blocked:false,batt:null,pc:true});S.loc='ask';S.prec=true;S.wiped=false;dc();dl();await di();Object.assign(Z,{log:[],ids:{c:null,l:null,i:null},seen:false,recognized:false,wiped:false})}
-  if(v==='truco'||v==='all'){T=mkT(T);if(T.shuf)T.order=shuffle([0,1,2,3,4]);T.tab=T.order[0];Object.assign(S,{tp:'allow',safe:'std',itp:false,ip:false})}
+  if(v==='truco'||v==='all'){T=mkT(T);T.order=shuffle([0,1,2,3,4]);clrLab();T.tab=T.order[0];Object.assign(S,{tp:'allow',safe:'std',itp:false,ip:false})}
   if(v==='huella'||v==='all'){Object.assign(H,{st:'guess',g:6,res:null,prev:null,same:false});S.fpa='std';S.fpi='none'}
   render();window.scrollTo(0,0)}
 
@@ -565,7 +604,7 @@ function r1(){
 }
 const mk=n=>{const s=n.toFixed(4);return L.mask?s.slice(0,-2)+'••':s};
 function viewLoc(){
-  $('#r1body').innerHTML=`<div class="cols"><div class="phone"><div class="screen" id="scr1"></div></div><div class="stack" id="side1" aria-live="polite"></div></div>`;
+  $('#r1body').innerHTML=`<div class="solo"><div class="phone"><div class="screen" id="scr1"></div></div><div class="stack" id="side1" aria-live="polite"></div></div>`;
   shell();drawLoc();
 }
 function locDlg(){
@@ -586,20 +625,15 @@ function infer(p){const h=new Date(p.ts).getHours(),a=[];
   a.push(`Con tu zona horaria (${Intl.DateTimeFormat().resolvedOptions().timeZone||'—'}) y tu idioma (${navigator.language||'—'}) ya hay un perfil: país, ciudad y hábitos.`);
   return a}
 function sideLoc(){
-  const el=$('#side1');if(!el)return;const p=L.pos;
-  if(L.st==='idle'||L.st==='wait'||L.st==='prompt'){
-    const bl=S.loc==='never'?`<p class="small" style="margin-top:8px;font-size:14px"><b>Ajuste actual:</b> ubicación bloqueada. Toca el botón para ver qué pasa.</p>`:'';
-    el.innerHTML=`<div class="card"><p class="kicker">Tu misión</p><h3>Consulta el clima de tu zona</h3><p class="small" style="margin-top:6px;font-size:15px">Toca el botón azul. Primero verás el permiso del ${IOS()?'iPhone (Safari)':'Android (Chrome)'}; si tu navegador real también pide confirmar, es el permiso verdadero.</p>${bl}<label class="chk"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Modo clase: ocultar mis coordenadas exactas</label><p class="small" style="margin-top:6px">Déjalo activado si vas a proyectar la pantalla.</p><div class="btn-row"><button class="btn" type="button" data-a1="demo">Usar ubicación de ejemplo</button></div></div>`;return}
-  if(L.st==='err'){
-    if(L.blocked){el.innerHTML=`${alertBox('good','Tu ajuste funcionó',`<p style="font-size:15px">${L.err} La página no recibe nada: ni siquiera pudo preguntar.</p>`)}<div class="card"><div class="btn-row" style="margin-top:0"><button class="btn pri" type="button" data-a1="unblock">Quitar el bloqueo y repetir</button><button class="btn" type="button" data-a1="demo">Ver con ubicación de ejemplo</button></div></div>`;return}
-    el.innerHTML=`${alertBox('good','Bien: no entregaste tu ubicación',`<p style="font-size:15px">${L.err} Si dices que no, la página no recibe nada.</p>`)}<div class="card"><p class="small" style="font-size:15px">Para ver qué habría pasado, usa una ubicación de ejemplo.</p><div class="btn-row"><button class="btn pri" type="button" data-a1="demo">Ver con ubicación de ejemplo</button><button class="btn" type="button" data-a1="retry">Intentar de nuevo</button></div></div>`;return}
-  const r=Math.min(74,14+Math.log10(p.acc+1)*18),cn=navigator.connection||navigator.mozConnection;
-  el.innerHTML=`<div class="panel"><h3>Lo que recibió el servidor de ClimaYa <span class="tag" style="background:#3a2a10;color:#FFC247">${L.demo?'ubicación de ejemplo':'datos reales tuyos'}</span></h3><div class="meta">solo se muestra aquí · no se envía a ningún servidor</div>
-  <div class="radar" aria-hidden="true"><svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid meet"><g stroke="#2c3a66" stroke-width="1.5"><path d="M0 85H300M150 0V170"/><circle cx="150" cy="85" r="30" fill="none"/><circle cx="150" cy="85" r="60" fill="none"/></g><circle cx="150" cy="85" r="${r}" fill="rgba(234,67,53,.18)" stroke="#EA4335" stroke-width="2"/><circle cx="150" cy="85" r="6" fill="#EA4335"/></svg></div>
-  <div class="kv"><b>Latitud</b><span>${mk(p.lat)}</span><b>Longitud</b><span>${mk(p.lng)}</span><b>Precisión</b><span>±${Math.round(p.acc)} m · ${p.precise===false?'aproximada':'exacta'}</span><b>Altitud</b><span>${p.alt!=null?Math.round(p.alt)+' m':'no informada'}</span><b>Hora</b><span>${new Date(p.ts).toLocaleTimeString()}</span><b>Zona horaria</b><span>${Intl.DateTimeFormat().resolvedOptions().timeZone||'—'}</span><b>Idioma</b><span>${navigator.language||'—'}</span><b>Red</b><span>${cn&&cn.effectiveType?cn.effectiveType:'no expuesta'}</span><b>Batería</b><span>${L.batt||'no expuesta'}</span></div>
-  <label class="chk" style="color:#C8D1E8"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Modo clase: ocultar coordenadas exactas</label></div>
-  ${alertBox('bad','Un solo clic fue suficiente',`<p style="font-size:15px">Esto es lo que podrían deducir con tus datos:</p><ul class="clues">${infer(p).map(x=>`<li>${x}</li>`).join('')}</ul>`)}
-  ${closeCard('loc','<button class="btn" type="button" data-a1="again">Repetir</button>')}`;
+  const el=$('#side1');if(!el)return;const p=L.pos;let h='';
+  if(L.st==='ok'){
+    h=`${recBox('Lo que recibió ClimaYa'+(L.demo?' · ubicación de ejemplo':''),[['Latitud',mk(p.lat)],['Longitud',mk(p.lng)],['Precisión',`±${Math.round(p.acc)} m · ${p.precise===false?'aproximada':'exacta'}`],['Altitud',p.alt!=null?Math.round(p.alt)+' m':'no informada'],...devRows(),['Podrían deducir',infer(p)[1]]])}<label class="chk" style="justify-content:center"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Ocultar coordenadas (modo clase)</label><div class="btn-row" style="margin:0;justify-content:center"><button class="btn" type="button" data-a1="again">Repetir</button></div>`;
+  }else if(L.st==='err'){
+    h=`<div class="res ${L.blocked?'good':'bad'}">${L.blocked?'<b>Tu ajuste funcionó.</b> ':''}${L.err} La página no recibe nada.</div><div class="btn-row" style="margin:0;justify-content:center">${L.blocked?'<button class="btn" type="button" data-a1="unblock">Quitar el bloqueo y repetir</button>':'<button class="btn" type="button" data-a1="retry">Intentar de nuevo</button>'}<button class="btn" type="button" data-a1="demo">Ver con ubicación de ejemplo</button></div>`;
+  }else{
+    h=`<p class="mis">Toca el botón azul del celular y responde el permiso.</p><div class="btn-row" style="margin:0;justify-content:center"><button class="btn" type="button" data-a1="demo">Usar ubicación de ejemplo</button></div>`;
+  }
+  el.innerHTML=h+closeCard('loc');
 }
 function startLoc(){
   if(S.loc==='never'){L.st='err';L.blocked=true;L.err=IOS()?'En Ajustes › Localización › Sitios web de Safari está en “Nunca”.':'En Ajustes el permiso de ubicación de Chrome está en “No permitir”.';return drawLoc()}
@@ -638,21 +672,18 @@ async function zVisit(){
   await readZ();render();
 }
 async function zDelCookie(){dc();zlog('Borraste solo las cookies, como haría la mayoría.');await readZ();render()}
-async function zWipe(){dc();dl();await di();Z.recognized=false;Z.wiped=true;S.wiped=true;Z.log=[];zlog('Borraste cookies y datos del sitio: el ID desapareció de los 3 lugares.','o');await readZ()}
+async function zWipe(){dc();dl();await di();clrLab();Z.recognized=false;Z.wiped=true;S.wiped=true;Z.log=[];zlog('Borraste cookies y datos del sitio: el ID desapareció de los 3 lugares.','o');await readZ()}
 function viewZ(){
-  const {c,l,i}=Z.ids;const row=(n,v)=>`<div class="rw"><span><b>${n}</b></span><span><span class="pill ${v?'on':'off'}">${v?'guardado':'vacío'}</span></span><code>${v||'—'}</code></div>`;
-  const last=Z.log[Z.log.length-1]||'';const zombie=Z.recognized&&/Faltaba/.test(last);
-  $('#r1body').innerHTML=`<div class="cols rev"><div class="stack"><div class="card"><p class="kicker">Cookie zombie</p><h3 style="font-size:22px">Borras la cookie… y el ID regresa</h3>
-  <p class="small" style="margin-top:6px;font-size:15px">Un rastreador guarda tu ID en varios lugares del navegador. Si borras solo uno, se restaura desde otro.</p>
-  <div class="btn-row"><button class="btn pri" type="button" data-z="visit">1 · Entrar al sitio</button><button class="btn" type="button" data-z="del">2 · Borrar cookies</button><button class="btn" type="button" data-z="visit">3 · Volver a entrar</button></div>
-  <div class="dev" role="table" aria-label="Almacenamiento del navegador"><div class="hd"><span>Lugar</span><span>Estado</span><span>Valor</span></div>${row('Cookie',c)}${row('localStorage',l)}${row('IndexedDB',i)}</div>
-  <div class="logc" aria-live="polite">${Z.log.length?Z.log.join(''):'<div>› Aún no has entrado al sitio.</div>'}</div></div>
-  ${zombie?alertBox('bad','Te reconocieron aunque borraste las cookies','<p style="font-size:15px">Borrar solo las cookies no basta: el ID estaba escondido en otros lugares y se restauró solo. Pasa lo mismo con huellas y otros rastreadores.</p>'):''}
-  ${closeCard('cookies','<button class="btn" type="button" data-z="wipe">Borrar todo (atajo)</button><a class="btn" href="#truco" style="text-decoration:none">Ir a la simulación 2</a>')}</div>
-  <div><div class="phone"><div class="screen" id="scr1"></div></div></div></div>`;
-  shell();drawZPhone();
+  $('#r1body').innerHTML=`<div class="solo"><div class="phone"><div class="screen" id="scr1"></div></div><div class="stack" id="side1" aria-live="polite"></div></div>`;
+  shell();drawZPhone();sideZ();
 }
-function drawZPhone(){const s=$('#scr1');if(!s)return;if(SETV.k&&SETV.host==='scr1')return drawSet();paint(s,homeScr('cookies','Abre <b>Ajustes</b> para borrar los datos de sitios del navegador.'),'#1b2540')}
+const zChip=(n,v)=>`<span class="zc ${v?'on':''}">${v?'✓':'✗'} ${n}</span>`;
+function drawZPhone(){const s=$('#scr1');if(!s)return;if(SETV.k&&SETV.host==='scr1')return drawSet();
+  const {c,l,i}=Z.ids,id=c||l||i,last=Z.log.length?Z.log[Z.log.length-1].replace(/<[^>]+>/g,''):'';
+  const page=`<div class="page"><div class="wx-h">Clima<i>Ya</i></div><div class="wx-body"><h4>Tu visita</h4><p class="small">ID de visitante guardado en tu navegador</p><div class="fpid" style="margin:10px 0">${id||'— sin ID —'}</div><div class="zcs">${zChip('Cookie',c)}${zChip('localStorage',l)}${zChip('IndexedDB',i)}</div><button class="wx-btn" type="button" data-z="visit">${Z.seen?'Recargar la página':'Entrar al sitio'}</button><p class="small" style="margin-top:10px">${last}</p></div></div>`;
+  paint(s,chrome('climaya.mx',page),'#fff')}
+function sideZ(){const el=$('#side1');if(!el)return;const {c,l,i}=Z.ids;const last=Z.log[Z.log.length-1]||'';const zombie=Z.recognized&&/Faltaba/.test(last);
+  el.innerHTML=`<div class="btn-row" style="margin:0;justify-content:center"><button class="btn" type="button" data-z="del">Borrar solo la cookie</button></div>${zombie?'<div class="res bad"><b>Te reconocieron.</b> Borraste la cookie, pero el ID estaba escondido en otros 2 lugares y se restauró.</div>':''}${recBox('Lo que guardó climaya.mx en tu navegador',[['Cookie',c||'vacío'],['localStorage',l||'vacío'],['IndexedDB',i||'vacío'],...devRows().slice(0,4)])}${closeCard('cookies','<button class="btn" type="button" data-z="wipe">Borrar todo (atajo)</button>')}`}
 $('#tabs1').addEventListener('click',e=>{const b=e.target.closest('[data-t1]');if(!b)return;L.tab=+b.dataset.t1;SETV.k=null;r1();shell();steps()});
 $('#r1body').addEventListener('click',e=>{
   const b=e.target.closest('[data-a1]'),z=e.target.closest('[data-z]');
@@ -673,7 +704,7 @@ readZ().then(()=>{if(CUR==='rastreo'&&L.tab===1)render()});
 
 /* ---------- 2 · ENGAÑOS ---------- */
 const SC=['Cookies','SMS','Alerta falsa','QR falso','WiFi gratis'];
-const mkT=keep=>({tab:0,tabs:false,shuf:keep?keep.shuf:false,order:[0,1,2,3,4],res:[null,null,null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0},D:{st:'cam',c:0},E:{st:'list',c:0}});
+const mkT=keep=>({tab:0,tabs:false,shuf:true,order:[0,1,2,3,4],res:[null,null,null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0},D:{st:'cam',c:0},E:{st:'list',c:0}});
 const FR={0:()=>({st:'main',c:0,sw:[1,1,1]}),1:()=>({st:'sms',c:0}),2:()=>({st:'page',c:0}),3:()=>({st:'cam',c:0}),4:()=>({st:'list',c:0})};
 let T=mkT();
 function r2(){
@@ -698,11 +729,11 @@ function scrB(){
     paint(s,chrome('rapido-express-mx.top/r/48291',`<div class="page"><div class="rx-h">RápidoExpress<small>Envíos</small></div><div class="rx"><h4>Reprograma tu entrega</h4><p class="small">Paquete MX48291 · sin entregar</p><div class="timer">Tiempo restante: <b id="cd2">23:59:12</b></div><form id="fk" autocomplete="off" novalidate><label for="fk1">Correo</label><input id="fk1" type="text" inputmode="email" autocomplete="off" placeholder="tu@correo.com"><label for="fk2">Contraseña de tu cuenta</label><input id="fk2" type="password" autocomplete="new-password" placeholder="••••••••"><button class="go" type="submit">Verificar y reprogramar</button></form><p class="small" style="margin-top:10px;font-size:12px">Simulación: lo que escribas no se envía ni se guarda.</p></div></div>`,T.tabs),'#fff');
   }else if(IOS()){
     const bub=`<div class="bub i">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div>`;
-    paint(s,`${SB()}<div class="imsg-h"><span class="iback" style="padding:6px 8px">‹</span><div class="imc"><span class="av">${IC.user}</span><small>+52 55 5550 1234 ›</small></div><span></span></div><div class="chat i"><div class="d">Hoy 9:41</div>${bub}${!T.res[1]?`<div class="isp">Este remitente no está en tus contactos.<div><button type="button" data-a2="spam">Reportar mensaje basura</button><button type="button" data-a2="nospam">Bloquear remitente</button></div></div>`:''}</div>${GEST()}`,'#fff');
+    paint(s,`${SB()}<div class="imsg-h"><span class="iback" style="padding:6px 8px">‹</span><div class="imc"><span class="av">${IC.user}</span><small>+52 55 5550 1234 ›</small></div><span></span></div><div class="chat i"><div class="d">Hoy ${clk()}</div>${bub}${!T.res[1]?`<div class="isp">Este remitente no está en tus contactos.<div><button type="button" data-a2="spam">Reportar mensaje basura</button><button type="button" data-a2="nospam">Bloquear remitente</button></div></div>`:''}</div>${GEST()}`,'#fff');
   }else{
     paint(s,`${SB()}<div class="msg-h"><span style="color:#5F6368;width:22px">${IC.back}</span><span class="av">${IC.user}</span><div><b>+52 55 5550 1234</b><small>Remitente desconocido</small></div></div>
     ${!T.res[1]?`<div class="spamb">Este número no está en tus contactos. ¿Es spam?<div><button type="button" data-a2="spam">Es spam</button><button type="button" data-a2="nospam">No es spam</button></div></div>`:''}
-    <div class="chat"><div class="d">Hoy · 9:41</div><div class="bub">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div></div>${GEST()}`,'#F8F9FA');
+    <div class="chat"><div class="d">Hoy · ${clk()}</div><div class="bub">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div></div>${GEST()}`,'#F8F9FA');
   }
 }
 function scrC(){
@@ -713,7 +744,7 @@ function scrC(){
     later(()=>{T.res[2]={ok:false,how:'cleaned'};T.C.st='page';r2()},2600);return;
   }
   const done=!!T.res[2],os=IOS()?'iOS':'Android';
-  paint(s,chrome('peliculas-hd-gratis.xyz',`<div class="page"><div class="news-h" style="font-family:system-ui;color:#5F6368">Cargando película…</div><div class="hero" style="background:#222"></div></div>${done?'':`<div class="scare" role="alert"><div style="font-size:42px" aria-hidden="true">⚠</div><div class="big">¡ADVERTENCIA DE SEGURIDAD!</div><div>Su ${IOS()?'iPhone':'dispositivo'} está INFECTADO con 3 virus</div><div class="tm" id="cd">00:59</div><ul><li>▸ Troyano.${os}.Banker</li><li>▸ Spyware de fotos y contactos</li><li>▸ Pérdida de datos inminente</li></ul><button class="fix" type="button" data-a2="fix">ELIMINAR VIRUS AHORA</button></div>`}`,T.tabs&&!done),'#fff');
+  paint(s,chrome('peliculas-hd-gratis.xyz',`<div class="page"><div class="news-h" style="font-family:system-ui;color:#5F6368">Cargando película…</div><div class="hero" style="background:#222"></div></div>${done?'':`<div class="scare" role="alert"><div style="font-size:42px" aria-hidden="true">⚠</div><div class="big">¡ADVERTENCIA DE SEGURIDAD!</div><div>Su ${realOS()} · ${realBrowser()} está INFECTADO con 3 virus</div><div class="tm" id="cd">00:59</div><ul><li>▸ Troyano.${os}.Banker</li><li>▸ Spyware de fotos y contactos</li><li>▸ Batería al ${BAT?BAT.l+'%':'—'}: dañada por virus</li></ul><button class="fix" type="button" data-a2="fix">ELIMINAR VIRUS AHORA</button></div>`}`,T.tabs&&!done),'#fff');
   if(!done){let t=59;window._cd=setInterval(()=>{t=t>0?t-1:59;const e=$('#cd');if(e)e.textContent='00:'+String(t).padStart(2,'0')},1000)}
 }
 function fakeQR(){let s=7;const r=()=>(s=(s*1103515245+12345)&0x7fffffff)/0x7fffffff;const fd=(x,y)=>x===0||x===6||y===0||y===6||(x>=2&&x<=4&&y>=2&&y<=4);let d='';
@@ -750,15 +781,26 @@ function outcome(k){const r=T.res[k];if(!r)return '';const c=[T.A,T.B,T.C,T.D,T.
   if(k===2)return r.how==='closed'?'Cerraste la pestaña sin tocar la alerta.':'Tocaste “ELIMINAR VIRUS”. En la vida real habrías descargado un archivo malicioso.';
   if(k===3)return r.how==='skip'?'No abriste el enlace del QR. Bien: un QR puede llevar a un sitio falso igual que un enlace.':r.data?`Escribiste tu tarjeta (${r.n} caracteres) y el CVV (${r.v} caracteres). En la vida real, el cobro y el robo ya habrían ocurrido.`:'Abriste el enlace y saliste antes de pagar. El sitio falso ya sabe que escaneaste ese código.';
   return r.how==='secure'?'Elegiste la red oficial con contraseña del local. Es la opción correcta.':r.how==='left'?'Entraste a la red abierta pero saliste sin escribir tus datos. Lo mejor era no conectarte.':`Escribiste usuario (${r.u} caracteres) y contraseña (${r.p} caracteres) en una página que no era del local. En la vida real, esa cuenta ya sería del atacante.`}
+function recRows(k){const r=T.res[k];if(!r)return null;
+  if(k===0){const jar=Object.entries(LAB);
+    return {t:'Lo que guardó el sitio en tu navegador',r:[...(jar.length?jar:[['Cookies publicitarias','ninguna']]),['Clics que costó',T.A.c],...devRows().slice(0,3)]}}
+  if(k===1)return r.how==='link'?{t:'Lo que vio el sitio falso',r:[...devRows(),...(r.data?[['Correo escrito',mask1(r.e)],['Contraseña escrita',mask1(r.p)]]:[])]}:null;
+  if(k===2)return {t:'Lo que la página ya sabía de ti',r:devRows().slice(0,7)};
+  if(k===3)return r.how==='skip'?null:{t:'Lo que vio el sitio falso',r:[...devRows(),...(r.data?[['Tarjeta escrita',mask1(r.n)],['CVV escrito',mask1(r.v)]]:[])]};
+  return r.how==='secure'?null:{t:r.how==='portal'?'Lo que vio el portal falso':'Lo que vio la red abierta',r:[...devRows(),...(r.data?[['Usuario escrito',mask1(r.u)],['Contraseña escrita',mask1(r.p)]]:[])]}}
 function side2(){
-  const el=$('#side2'),k=T.tab,r=T.res[k];
-  let h='';
-  if(!r)h=`<div class="card"><p class="kicker">Tu misión${k>2?' · extra':''}</p><h3>${MISS[k][0]}</h3><p class="small" style="margin-top:6px;font-size:15px">${MISS[k][1]}</p><label class="chk"><input type="checkbox" id="shuf" ${T.shuf?'checked':''}> Orden aleatorio al reiniciar</label></div>`;
-  else{const d=RV[k],nx=T.order.find(i=>!T.res[i]);h=`<div class="rv">${alertBox(r.ok?'good':'bad',r.ok?'Bien hecho':'Caíste en el truco',`<p style="font-size:15px">${outcome(k)}</p>`)}<div class="card" style="margin-top:14px"><span class="tag">${d.title.split(':')[0]}</span><h3 style="margin-top:8px">${d.title.split(': ')[1]}</h3><ul class="clues">${d.clues.map(c=>`<li>${c}</li>`).join('')}</ul><div class="tip"><b>Qué hacer:</b> ${d.tip()}</div><div class="btn-row">${nx===undefined?'':`<button class="btn pri" type="button" data-next="1">Siguiente escenario</button>`}<button class="btn" type="button" data-again="${k}">Repetir</button></div></div>${k===0?`<div style="margin-top:14px">${closeCard('browser')}</div>`:''}</div>`}
-  if(T.res.every(Boolean)){const bad=T.res.filter(x=>!x.ok).length;h+=`<div class="card"><span class="tag g">Resumen</span><h3 style="margin-top:8px">${bad===0?'Los esquivaste los cinco':`Caíste en ${bad} de 5`}</h3><table><tr><th>Escenario</th><th>Resultado</th></tr>${SC.map((n,i)=>`<tr><td>${n}</td><td>${T.res[i].ok?'✓ Lo detectaste':'✗ Te engañó'}</td></tr>`).join('')}</table><p style="margin-top:10px;font-weight:600">Regla común: urgencia + presión + pedir algo que no corresponde = trampa.</p><div class="btn-row"><a class="btn pri" href="#huella" style="text-decoration:none">Ir a la simulación 3</a><a class="btn" href="#resumen" style="text-decoration:none">Ver mi resumen</a><button class="btn" type="button" data-reset="1">Reiniciar todo</button></div></div>`}
+  const el=$('#side2'),k=T.tab,r=T.res[k];let h='';
+  if(!r)h=`<p class="mis"><b>${MISS[k][0]}.</b> ${MISS[k][1]}</p>`;
+  else{const nx=T.order.find(i=>!T.res[i]),rr=recRows(k);
+    h=`<div class="res ${r.ok?'good':'bad'}"><b>${r.ok?'Bien hecho.':'Caíste en el truco.'}</b> ${outcome(k)}</div>${rr?recBox(rr.t,rr.r):''}<div class="btn-row" style="margin:0;justify-content:center">${nx===undefined?'':'<button class="btn pri" type="button" data-next="1">Siguiente</button>'}<button class="btn" type="button" data-again="${k}">Repetir</button></div>`}
+  h+=closeCard(SCK[k]);
+  if(T.res.every(Boolean)){const bad=T.res.filter(x=>!x.ok).length;h+=`<div class="res ${bad?'bad':'good'}"><b>${bad===0?'Los esquivaste los cinco.':`Caíste en ${bad} de 5.`}</b> <a href="#resumen">Ver mi resumen</a> · <button class="lnk" type="button" data-reset="1">Reiniciar</button></div>`}
   el.innerHTML=h;
 }
-function finishA(r){T.res[0]=r;r2()}
+function finishA(r){
+  if(r.how==='accept'){setLab('lab_ad_id',rid());setLab('lab_analytics',rid());setLab('lab_partners','143')}
+  else if(r.how==='save'){const sw=T.A.sw;if(sw[0])setLab('lab_ad_id',rid());if(sw[1])setLab('lab_analytics',rid());if(sw[2])setLab('lab_partners','143')}
+  T.res[0]=r;r2()}
 $('#scr2').addEventListener('click',e=>{
   const l=e.target.closest('a[data-a2="link"]');if(l)e.preventDefault();
   const b=e.target.closest('[data-a2],[data-act]');if(!b)return;const a=b.dataset.a2||b.dataset.act;
@@ -802,14 +844,14 @@ $('#scr2').addEventListener('submit',e=>{
 $('#tabs2').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;T.tab=+b.dataset.t;T.tabs=false;SETV.k=null;r2();steps()});
 $('#side2').addEventListener('click',e=>{
   const n=e.target.closest('[data-next]');if(n){const nx=T.order.find(i=>!T.res[i]);if(nx!==undefined)T.tab=nx;T.tabs=false;r2();steps();return}
-  const a=e.target.closest('[data-again]');if(a){const k=+a.dataset.again;T.res[k]=null;T['ABCDE'[k]]=FR[k]();T.tabs=false;r2();steps();return}
+  const a=e.target.closest('[data-again]');if(a){const k=+a.dataset.again;T.res[k]=null;if(k===0)clrLab();T['ABCDE'[k]]=FR[k]();T.tabs=false;r2();steps();return}
   if(e.target.closest('[data-reset]')){resetView('truco')}
 });
-$('#side2').addEventListener('change',e=>{if(e.target.id==='shuf')T.shuf=e.target.checked});
 
 /* ---------- 3 · HUELLA DIGITAL ---------- */
 const H={st:'guess',g:6,res:null,prev:null,same:false};
 function fnv(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16).toUpperCase().padStart(8,'0')}
+function fonts(){const base=['monospace','sans-serif','serif'],test=['Arial','Verdana','Times New Roman','Courier New','Georgia','Comic Sans MS','Impact','Tahoma','Trebuchet MS','Roboto','Helvetica','Calibri','Cambria','Segoe UI','Menlo','Consolas','Noto Sans','Ubuntu','Lucida Console','Palatino'];const c=document.createElement('canvas').getContext('2d'),s='mmmmmmmmmmlli',w={};base.forEach(b=>{c.font='72px '+b;w[b]=c.measureText(s).width});return test.filter(f=>base.some(b=>{c.font=`72px '${f}',${b}`;return c.measureText(s).width!==w[b]}))}
 function collect(){
   const it=[];const add=(k,v)=>it.push([k,String(v)]);
   const nav=navigator;
@@ -832,15 +874,18 @@ function collect(){
   add('Tarjeta gráfica',gpu);
   let cv='No disponible';try{const c=document.createElement('canvas');c.width=220;c.height=40;const x=c.getContext('2d');x.textBaseline='top';x.font='16px Arial';x.fillStyle='#f60';x.fillRect(110,2,60,24);x.fillStyle='#069';x.fillText('Privacidad,🙂 ñ',4,6);x.strokeStyle='rgba(102,204,0,.7)';x.arc(60,20,14,0,6.28);x.stroke();cv=fnv(c.toDataURL())}catch(e){}
   add('Huella de canvas',cv);
+  { const fl=fonts();add('Fuentes detectadas',`${fl.length} de 20`); }
+  add('Sistema',realOS());
+  add('Batería',BAT?BAT.l+'%'+(BAT.c?' · cargando':''):'No expuesta');
   add('Hora local',new Date().toLocaleTimeString());
   const id=(fnv(it.filter(x=>x[0]!=='Hora local'&&x[0]!=='Ventana').map(x=>x.join('=')).join('|')).slice(0,4)+'-'+fnv(it.filter(x=>x[0]!=='Hora local'&&x[0]!=='Ventana').map(x=>x[1]).reverse().join('~')).slice(0,4));
   return {it,id};
 }
-const WGT={'Idioma':2.5,'Zona horaria':3,'Pantalla':4,'Plataforma':2,'Navegador':2,'Núcleos de CPU':1.5,'Memoria RAM':1,'Pantalla táctil':.7,'Tema del sistema':.6,'Tipo de conexión':1,'Tarjeta gráfica':4,'Huella de canvas':5};
+const WGT={'Idioma':2.5,'Zona horaria':3,'Pantalla':4,'Plataforma':2,'Navegador':2,'Núcleos de CPU':1.5,'Memoria RAM':1,'Pantalla táctil':.7,'Tema del sistema':.6,'Tipo de conexión':1,'Tarjeta gráfica':4,'Huella de canvas':5,'Fuentes detectadas':3};
 function level(it){let s=0,t=0;for(const [k,v] of it){const w=WGT[k];if(!w)continue;t+=w;if(!/^(No expuest|No disponible|—)/.test(v))s+=w}const pct=Math.round(s/t*100);return {pct,txt:pct>=75?'Alta':pct>=45?'Media':'Baja'}}
 function r3(){
   clearT();const c=$('#h-card');
-  $('#h-cols').classList.toggle('two',H.st==='done');$('#h-phone').hidden=H.st!=='done';
+  $('#h-phone').hidden=H.st!=='done';
   if(H.st==='guess'){
     c.innerHTML=`<p class="kicker">Paso 1 · Apuesta</p><h3 style="font-size:22px">¿Cuántos datos de tu dispositivo puede leer esta página sin pedirte permiso?</h3><div class="big" style="margin:14px 0 4px"><span id="gv">${H.g}</span></div><input type="range" id="rg" min="0" max="20" step="1" value="${H.g}" aria-label="Cantidad de datos, de 0 a 20"><div class="small" style="display:flex;justify-content:space-between"><span>0</span><span>10</span><span>20</span></div><div class="btn-row"><button class="btn pri" type="button" id="lk">Fijar y escanear</button></div>`;
     $('#rg').addEventListener('input',e=>{H.g=+e.target.value;$('#gv').textContent=H.g});
@@ -850,22 +895,18 @@ function r3(){
     later(()=>{H.res=collect();H.same=H.prev!==null&&H.prev===H.res.id;H.prev=H.res.id;H.st='done';r3();steps()},1100);
   }else{
     const {it,id}=H.res;const n=it.length;const d=n-H.g;const lv=level(it);
-    c.innerHTML=`<p class="kicker">Resultado</p><div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end"><div><div class="small">Tú dijiste</div><div class="big" style="font-size:64px">${H.g}</div></div><div><div class="small">Se leyeron</div><div class="big" style="font-size:64px;color:var(--red)">${n}</div></div></div>
+    c.innerHTML=`<div class="hres"><div><span class="small">Dijiste</span><b>${H.g}</b></div><div><span class="small">Se leyeron</span><b style="color:var(--red)">${n}</b></div></div>
     <p style="margin-top:8px;font-weight:600">${d>0?`Te faltaron ${d}: sin pedir nada, esta página ya conoce ${n} datos tuyos.`:d===0?'Exacto. Sabías cuánto expone un navegador.':`Te pasaste por ${-d}, pero igual son ${n} datos.`}</p>
-    <div class="fp-list" role="list">${it.map(([k,v],i)=>`<div class="fp-row" role="listitem" style="animation-delay:${RM?0:i*60}ms"><b>${k}</b><span>${v.replace(/</g,'&lt;')}</span></div>`).join('')}</div>
-    <p class="small" style="margin-top:10px">Además, cualquier sitio recibe tu dirección IP al conectarse. Aquí no la mostramos.</p>
-    <div class="alert bad" style="margin-top:14px"><h3>${IC.warn}Tu huella combinada</h3><p style="font-size:15px">Juntos, estos datos forman un identificador que algunos rastreadores usan para reconocerte <b>aunque borres las cookies</b>.</p></div>
+    <div class="fp-list" role="list">${it.map(([k,v],i)=>`<div class="fp-row" role="listitem" style="animation-delay:${RM?0:i*50}ms"><b>${k}</b><span>${v.replace(/</g,'&lt;')}</span></div>`).join('')}</div>
     <div class="fpid" aria-label="Identificador calculado">${id}</div>
-    ${H.same?`<div class="alert bad" style="margin-top:12px"><h3>${IC.warn}El ID no cambió</h3><p style="font-size:15px">Es el mismo que en tu lectura anterior${Z.wiped?', <b>aunque borraste cookies y datos de sitios entre una y otra</b>':''}. Por eso borrar cookies no te hace anónimo.</p></div>`:H.prev&&Z.wiped?'':''}
-    <div style="margin-top:14px"><b style="font-size:15px">Qué tan fácil sería reconocerte: ${lv.txt}</b><div class="lvl" role="img" aria-label="Nivel ${lv.txt}"><i style="width:${lv.pct}%"></i></div><p class="small" style="margin-top:6px;font-size:13px">Estimación didáctica según cuántos datos distintivos se leyeron. Para una medición real usa <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener">Cover Your Tracks</a> de la EFF (necesita internet).</p></div>
-    <div class="rv"><div class="tip"><b>Prueba:</b> borra las cookies (simulación 1) o activa la protección en el celular de la derecha, y vuelve a escanear. Si el ID no cambia, la huella no depende de cookies.</div></div>
-    <div class="btn-row"><button class="btn pri" type="button" id="rp">Repetir escaneo</button><a class="btn" href="#resumen" style="text-decoration:none">Ver mi resumen</a><a class="btn" href="#inicio" style="text-decoration:none">Volver al inicio</a></div>`;
-    $('#h-phone').innerHTML=`<div class="phone"><div class="screen" id="scr3"></div></div><div style="margin-top:14px">${closeCard('fp')}</div>`;
-    shell();drawPhone3();
+    ${H.same?`<div class="res bad" style="margin-top:10px"><b>El ID no cambió</b>${Z.wiped?' aunque borraste cookies y datos de sitios':''}: la huella no depende de cookies.</div>`:''}
+    <div class="lvlw">Qué tan fácil sería reconocerte: <b>${lv.txt}</b><div class="lvl" role="img" aria-label="Nivel ${lv.txt}"><i style="width:${lv.pct}%"></i></div></div>
+    <div class="btn-row"><button class="btn pri" type="button" id="rp">Repetir escaneo</button></div>`;
+    $('#h-phone').innerHTML=(SETV.k?'<div class="phone"><div class="screen" id="scr3"></div></div>':'')+closeCard('fp');
+    shell();if(SETV.k&&$('#scr3'))drawSet();
     $('#rp').addEventListener('click',()=>{H.st='scan';SETV.k=null;r3();steps()});
   }
 }
-function drawPhone3(){const s=$('#scr3');if(!s)return;if(SETV.k&&SETV.host==='scr3')return drawSet();paint(s,homeScr('fp','Abre <b>Ajustes</b> para reducir los datos que tu navegador revela.'),'#1b2540')}
 
 /* ---------- RESUMEN ---------- */
 function rsum(){
@@ -887,6 +928,7 @@ document.addEventListener('click',e=>{
   const os=e.target.closest('[data-os]');if(os){setOS(os.dataset.os);return}
   if(e.target.closest('[data-proj]')){toggleProj();return}
   const rs=e.target.closest('[data-rst]');if(rs){resetView(rs.dataset.rst);return}
+  const fx=e.target.closest('[data-fix]');if(fx){FX[fx.dataset.fix]=!FX[fx.dataset.fix];render();return}
   const op=e.target.closest('[data-open]');if(op){openSet(op.dataset.open);return}
   const sa=e.target.closest('[data-s]');if(sa){sAct(sa)}
 });
