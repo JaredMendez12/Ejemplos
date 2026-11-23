@@ -387,13 +387,29 @@ body.proj footer{display:none}
 .lvlw{margin-top:12px;font-size:14px}
 #h-phone{display:grid;gap:12px;justify-items:center;margin-top:14px}
 #h-phone[hidden]{display:none}
+/* ===== v4: menús compactos ===== */
+.pstep,body.proj .pstep{display:none!important}
+.tabs{gap:5px;flex-wrap:nowrap;overflow-x:auto;margin-top:10px;padding-bottom:2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{padding:5px 11px;font-size:13px;gap:6px;white-space:nowrap;flex:none}
+.tabs .st{width:16px;height:16px;font-size:10px}
+.tabs .xt{display:none}
+.tabs .st:not(.good):not(.bad){display:none}
+.tabs button{padding:5px 12px}
+.top-in{padding:6px 14px;gap:8px}
+.brand{font-size:14px}.brand svg{width:18px;height:18px}
+.sim{display:none}
+nav a{font-size:13px;padding:5px 10px}
+.seg button{padding:4px 10px;font-size:12px}.pbtn{padding:5px 10px;font-size:12px}
+.tools{gap:6px}
+.view h2{font-size:22px;margin:0}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
   <a class="brand" href="#inicio"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Laboratorio de privacidad</a>
   <span class="sim">Simulación · nada es real</span>
-  <nav aria-label="Simulaciones"><a href="#inicio">Inicio</a><a href="#rastreo">1 · Rastreo en un clic</a><a href="#truco">2 · Engaños</a><a href="#huella">3 · Huella digital</a><a href="#resumen">Mi resumen</a></nav>
+  <nav aria-label="Simulaciones"><a href="#inicio">Inicio</a><a href="#rastreo">Rastreo</a><a href="#truco">Engaños</a><a href="#huella">Huella</a><a href="#resumen">Resumen</a></nav>
   <div class="tools"><span class="seg" role="group" aria-label="Sistema del celular simulado"><button type="button" data-os="android" aria-pressed="false">Android</button><button type="button" data-os="ios" aria-pressed="false">iPhone</button></span><button class="pbtn" type="button" data-proj aria-pressed="false" title="Atajo: tecla P">Modo proyector</button></div>
 </div></header>
 
@@ -703,7 +719,7 @@ $('#r1body').addEventListener('change',e=>{if(e.target.id==='mask'){L.mask=e.tar
 readZ().then(()=>{if(CUR==='rastreo'&&L.tab===1)render()});
 
 /* ---------- 2 · ENGAÑOS ---------- */
-const SC=['Cookies','SMS','Alerta falsa','QR falso','WiFi gratis'];
+const SC=['Cookies','SMS','Virus','QR','WiFi'];
 const mkT=keep=>({tab:0,tabs:false,shuf:true,order:[0,1,2,3,4],res:[null,null,null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0},D:{st:'cam',c:0},E:{st:'list',c:0}});
 const FR={0:()=>({st:'main',c:0,sw:[1,1,1]}),1:()=>({st:'sms',c:0}),2:()=>({st:'page',c:0}),3:()=>({st:'cam',c:0}),4:()=>({st:'list',c:0})};
 let T=mkT();
