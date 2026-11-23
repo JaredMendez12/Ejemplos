@@ -208,13 +208,174 @@ input[type=range]{width:100%;accent-color:var(--ink);height:34px}
 @media (max-width:520px){.dev .hd,.dev .rw{grid-template-columns:1fr 1fr}.dev .hd span:nth-child(3),.dev .rw>:nth-child(3){grid-column:1/-1}}
 footer{max-width:1100px;margin:0 auto;padding:0 16px 36px;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-delay:0ms!important;transition:none!important}.scan i b,.ps-prog i b{width:100%}}
+
+/* ================= v2: sistemas operativos, ajustes, resumen, proyector ================= */
+.tools{display:flex;gap:8px;align-items:center}
+.seg{display:inline-flex;background:#EEF0F5;border-radius:99px;padding:3px;border:1px solid var(--line)}
+.seg button{border:0;background:none;border-radius:99px;padding:6px 12px;font-weight:700;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pbtn{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 12px;font-weight:700;font-size:13px;color:var(--muted)}
+.pbtn[aria-pressed="true"]{background:#F59E0B;border-color:#F59E0B;color:#1B1F2A}
+.vh{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.cols.rev{grid-template-columns:minmax(0,1fr)}
+@media (min-width:900px){.cols.rev{grid-template-columns:minmax(0,1fr) 400px}}
+#h-cols{margin-top:20px;max-width:760px}
+#h-cols.two{display:grid;gap:20px;max-width:none;grid-template-columns:minmax(0,1fr);align-items:start}
+@media (min-width:900px){#h-cols.two{grid-template-columns:minmax(0,1fr) 400px}}
+.tabs .xt{font-size:10px;text-transform:uppercase;letter-spacing:.06em;background:var(--amber-t);color:var(--amber);border-radius:99px;padding:1px 7px}
+.tabs button[aria-selected="true"] .xt{background:#fff3;color:#fff}
+
+/* carcasa por sistema */
+.phone{position:relative}
+.phone.ios{border-radius:56px;padding:12px;background:#0d0d10;box-shadow:0 24px 60px rgba(15,20,40,.35),inset 0 0 0 2px #2e2e33}
+.phone.ios .screen{border-radius:45px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,sans-serif}
+.phone.android .screen{border-radius:30px}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:98px;height:29px;border-radius:20px;background:#000;z-index:40}
+.punch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:#0a0a0c;box-shadow:0 0 0 2px #1d1d22;z-index:40}
+.sb.i{padding:15px 30px 0;font-size:15px;font-weight:600;height:48px;align-items:flex-start}
+.sb.a{padding:10px 22px 4px}
+.sb .r{display:inline-flex;align-items:center;gap:5px}
+.sb .r svg{margin:0}.sb svg.bt{width:26px;height:13px}
+.phone.ios .gest i{width:132px;height:5px}
+@media (max-width:520px){.phone.ios{padding:7px;border-radius:40px}.phone.ios .screen{border-radius:34px}}
+/* barras del navegador */
+.tabn b{border:2px solid #5F6368;border-radius:6px;width:20px;height:20px;font-size:11px;display:grid;place-items:center;color:#5F6368}
+.ibar{flex:none;background:rgba(246,246,248,.97);border-top:.5px solid #D1D1D6;padding:8px 12px 0}
+.iurl{display:flex;align-items:center;gap:8px;background:#E9E9EB;border-radius:12px;padding:9px 12px;font-size:14px;color:#1c1c1e}
+.iurl .aa{font-size:13px;color:#1c1c1e}
+.iurl .u{flex:1;display:flex;gap:4px;justify-content:center;align-items:center;min-width:0;overflow:hidden;white-space:nowrap}
+.iurl svg{width:12px;height:12px;color:#8E8E93;flex:none}
+.itools{display:flex;justify-content:space-around;padding:8px 0 4px;color:#0A84FF}
+.itools span,.itools button{border:0;background:none;width:34px;height:30px;display:grid;place-items:center;color:#0A84FF}
+.itools svg{width:22px;height:22px}
+.tabov{align-items:center;justify-content:center;padding:18px;z-index:9}
+.tsw{width:100%;display:grid;gap:14px;justify-items:center}
+.tcard{width:80%;border-radius:18px;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.25);overflow:hidden;color:#202124}
+.tcard .th{display:flex;justify-content:space-between;align-items:center;padding:6px 6px 6px 14px;font-size:13px;font-weight:600;border-bottom:1px solid #eee}
+.tcard .tp{height:140px;background:linear-gradient(160deg,#222,#4a4f5c)}
+/* diálogos */
+.dlg .prec{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 12px}
+.dlg .prec button{display:block;width:auto;margin:0;background:#fff;border:2px solid #CAC4D0;border-radius:16px;padding:8px 6px;color:#1D1B20;font-weight:600;font-size:13px}
+.dlg .prec button[aria-pressed="true"]{border-color:#0B57D0;background:#E8F0FE}
+.prec .mm{height:44px;border-radius:10px;background:#cfe0d2;margin-bottom:6px;position:relative;overflow:hidden}
+.prec .mm i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:rgba(26,115,232,.35);border:2px solid #1A73E8}
+.dlg.i{background:rgba(242,242,247,.97);border-radius:14px;margin:auto 38px;padding:20px 0 0;text-align:center;color:#000;overflow:hidden}
+.dlg.i h5{font-size:17px;font-weight:600;padding:0 18px 4px;line-height:1.25}
+.dlg.i p{font-size:13px;padding:0 18px 16px;margin:0}
+.dlg.i .ibtns{display:flex;border-top:.5px solid #C6C6C8}
+.dlg.i .ibtns button{flex:1;background:none;border:0;padding:13px 4px;font-size:17px;color:#007AFF;border-radius:0;margin:0;width:auto}
+.dlg.i .ibtns button+button{border-left:.5px solid #C6C6C8;font-weight:600}
+/* pantalla de inicio */
+.home{flex:1;background:linear-gradient(160deg,#2b3a67,#6b3fa0 60%,#c2599a);position:relative;padding:14px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 6px;margin-top:8px}
+.app{display:flex;flex-direction:column;align-items:center;gap:5px;border:0;background:none;color:#fff;font-size:11px}
+.appi{width:56px;height:56px;display:grid;place-items:center;color:#fff}
+.appi svg{width:28px;height:28px}
+.phone.android .appi{border-radius:50%}.phone.ios .appi{border-radius:14px}
+.app.act .appi{box-shadow:0 0 0 4px rgba(255,255,255,.55);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(255,255,255,.12)}}
+.bub2{position:absolute;left:14px;right:14px;bottom:22px;background:rgba(255,255,255,.93);color:#1B1F2A;border-radius:16px;padding:12px 14px;font-size:14px}
+/* ajustes Android */
+.atop{display:flex;align-items:center;gap:6px;padding:4px 8px 10px;color:#1D1B20;flex:none}
+.atop b{display:block;font-size:20px;line-height:1.1}.atop small{color:#49454F;font-size:12px}
+.ascr{flex:1;overflow:auto;padding-bottom:78px}
+.ah{padding:14px 18px 6px;font-size:13px;font-weight:700;color:#0B57D0}
+.arow{display:flex;align-items:center;gap:14px;width:100%;border:0;background:none;text-align:left;padding:12px 18px;font-size:15px;color:#1D1B20;justify-content:space-between}
+button.arow{justify-content:flex-start}
+.arow b{display:block;font-weight:500}.arow small{display:block;color:#49454F;font-size:12.5px;margin-top:2px}
+.rd{width:20px;height:20px;border-radius:50%;border:2px solid #49454F;flex:none;position:relative}
+.rd.on{border-color:#0B57D0}.rd.on::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#0B57D0}
+.ckb{width:20px;height:20px;border-radius:4px;border:2px solid #49454F;flex:none;display:grid;place-items:center;font-size:13px;color:#fff;font-weight:700}
+.ckb.on{background:#0B57D0;border-color:#0B57D0}
+.donebar{position:absolute;left:12px;right:12px;bottom:12px;background:#0F4F25;color:#fff;border-radius:14px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:600;z-index:6}
+.donebar button{border:0;background:#fff;color:#0F4F25;border-radius:99px;padding:7px 14px;font-weight:700}
+.snack{margin:8px 18px;background:#E6F4EA;border:1px solid #B7DFC4;color:#0F4F25;border-radius:12px;padding:10px 12px;font-size:13.5px}
+.abtn{margin:14px 18px;width:calc(100% - 36px);border:0;border-radius:99px;background:#0B57D0;color:#fff;font-weight:600;padding:12px;font-size:15px}
+/* ajustes iOS */
+.itop{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:2px 8px 10px;color:#000;flex:none}
+.itop b{font-size:17px;font-weight:600}
+.iback{border:0;background:none;color:#007AFF;font-size:17px;text-align:left;padding:6px 8px}
+.iscr{flex:1;overflow:auto;padding-bottom:78px}
+.igh{padding:18px 20px 6px;font-size:12.5px;color:#6C6C70;text-transform:uppercase}
+.igf{padding:6px 20px;font-size:12.5px;color:#6C6C70}
+.ig{margin:0 16px;background:#fff;border-radius:12px;overflow:hidden}
+.irow{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;border:0;background:none;text-align:left;padding:12px 16px;font-size:16px;color:#000;border-top:.5px solid #E5E5EA}
+.ig>.irow:first-child{border-top:0}
+.ck{color:#007AFF;font-weight:700}.irow.red{color:#FF3B30;justify-content:center}
+.itg{width:51px;height:31px;border-radius:99px;border:0;background:#E9E9EA;position:relative;flex:none;padding:0}
+.itg::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.3);transition:transform .15s}
+.itg.on{background:#34C759}.itg.on::after{transform:translateX(20px)}.itg:disabled{opacity:.55}
+.isheet-ov{position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;flex-direction:column;justify-content:flex-end;padding:10px 10px 30px;gap:8px;z-index:9}
+.ish-body{background:rgba(242,242,247,.97);border-radius:14px;overflow:hidden;text-align:center}
+.ish-body p{font-size:13px;color:#6C6C70;padding:14px 16px}
+.ish-body button{display:block;width:100%;border:0;border-top:.5px solid #C6C6C8;background:none;padding:15px;font-size:20px;color:#FF3B30}
+.ish-c{border:0;background:#fff;border-radius:14px;padding:15px;font-size:20px;font-weight:600;color:#007AFF}
+/* mensajes iOS */
+.imsg-h{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;padding:2px 6px 8px;background:#F6F6F8;border-bottom:.5px solid #D1D1D6;flex:none;color:#000}
+.imc{display:flex;flex-direction:column;align-items:center;gap:2px}
+.imc .av{width:40px;height:40px;border-radius:50%;background:#A5A5AA;display:grid;place-items:center;color:#fff}.imc .av svg{width:24px;height:24px}.imc small{font-size:11px}
+.chat.i{background:#fff}
+.bub.i{background:#E9E9EB;border-radius:18px;font-size:16px}
+.isp{margin-top:14px;font-size:13px;color:#3C3C43;text-align:center}
+.isp div{display:flex;gap:14px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.isp button{border:0;background:none;color:#007AFF;font-size:15px}
+/* cámara / QR falso */
+.cam{flex:1;background:radial-gradient(circle at 50% 40%,#4a4f5c,#15171c 75%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.meter{width:156px;height:270px;border-radius:26px 26px 8px 8px;background:linear-gradient(180deg,#7c8594,#4b5260);box-shadow:inset 0 0 0 3px #2c313b;position:relative;display:flex;align-items:center;justify-content:center}
+.meter .lcd{position:absolute;top:18px;left:20px;right:20px;height:44px;background:#1d3b2a;border-radius:6px;color:#7CE3A0;font:600 11px var(--mono);display:grid;place-items:center}
+.stk{position:relative;width:108px;background:#fff;border-radius:6px;padding:7px 6px 5px;text-align:center;color:#111;font:700 8.5px/1.2 system-ui;transform:rotate(-2deg);box-shadow:0 2px 8px rgba(0,0,0,.4);margin-top:56px;border:0;cursor:pointer}
+.stk svg{width:80px;height:80px;display:block;margin:4px auto 2px;fill:#111}
+.stk::after{content:"";position:absolute;right:-1px;bottom:-1px;border-style:solid;border-width:0 0 14px 14px;border-color:transparent transparent #c8ccd4 transparent}
+.camui{position:absolute;left:0;right:0;bottom:0;padding:16px 14px 10px;text-align:center;color:#fff;font-size:13px;background:linear-gradient(0deg,rgba(0,0,0,.65),transparent)}
+.qchip{position:absolute;left:14px;right:14px;display:flex;align-items:center;gap:10px;border-radius:99px;padding:10px 12px 10px 16px;font-size:13px;z-index:6}
+.qchip.a{bottom:60px;background:#fff;color:#1D1B20;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.qchip.i{top:56px;background:#FFD60A;color:#000;font-weight:600}
+.qchip span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qchip button{border:0;border-radius:99px;padding:7px 12px;font-weight:700;font-size:13px;background:#0B57D0;color:#fff}.qchip.i button{background:#000;color:#fff}
+.qchip .qx{background:none;color:inherit;padding:4px 6px;font-size:16px}
+.pk-h{background:#0E7C66;color:#fff;padding:14px 16px;font:800 20px/1 system-ui;display:flex;justify-content:space-between;align-items:center}
+.pk-h small{font:600 11px system-ui;background:rgba(0,0,0,.2);padding:4px 8px;border-radius:99px}
+.rx.pk .go{background:#0E7C66}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wp-h{background:linear-gradient(120deg,#6C3FE0,#9B5CF6);color:#fff;padding:14px 16px;font:800 19px/1.1 system-ui}
+.rx.wp .go{background:#6C3FE0}
+/* wifi */
+.wf{flex:1;overflow:auto;background:#F6F2F9;color:#202124}
+.wf h4{padding:10px 18px 4px;font-size:24px}
+.wf .poster{margin:8px 14px;background:#FFF8E1;border:1px solid #F0DC9A;border-radius:12px;padding:10px 12px;font-size:12.5px;color:#5b4a00}
+.wfr{display:flex;align-items:center;gap:12px;width:100%;border:0;background:#fff;border-top:1px solid #ECEEF2;padding:12px 18px;text-align:left;font-size:15px;color:#202124}
+.wfr b{font-weight:600;display:block}.wfr small{color:#5F6368}.wfr svg{width:20px;height:20px;flex:none}
+.phone.ios .wf{background:#F2F2F7}.phone.ios .wfr{font-size:17px}
+/* ciérralo / resumen / proyector */
+.steps{padding-left:20px;margin-top:8px;display:grid;gap:4px;font-size:15px}
+.cl.ok{border-color:#B7DFC4;background:#F6FBF8}
+.okline{margin-top:8px;font-weight:700;color:var(--green)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center}
+.kpi b{display:block;font-size:40px;line-height:1;letter-spacing:-.03em}.kpi span{font-size:13px;color:var(--muted);font-weight:600}
+.kpi.bad b{color:var(--red)}.kpi.good b{color:var(--green)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{border:1px solid var(--line);border-radius:99px;padding:6px 12px;font-size:14px;font-weight:600;color:var(--muted)}
+.chip.on{background:var(--green-t);border-color:#B7DFC4;color:var(--green)}
+.st-b{color:var(--red);font-weight:700}.st-g{color:var(--green);font-weight:700}.st-f{color:var(--amber);font-weight:700}.st-p{color:var(--muted);font-weight:600}
+.lvl{height:12px;border-radius:99px;background:#E4E8F1;overflow:hidden;margin-top:6px}.lvl i{display:block;height:100%;background:linear-gradient(90deg,#34A853,#FBBC04,#EA4335)}
+.pstep{display:none;list-style:none;padding:0;gap:8px;flex-wrap:wrap;margin-top:14px}
+body.proj .pstep{display:flex}
+.pstep li{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 14px 6px 6px;font-size:14px;font-weight:600;color:var(--muted)}
+.pstep li b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:12px}
+.pstep li.c{background:var(--ink);color:#fff;border-color:var(--ink)}.pstep li.c b{background:#F59E0B;color:#1B1F2A}
+.pstep li.d b{background:var(--green);color:#fff}
+body.proj main{zoom:1.16}
+body.proj footer{display:none}
+@media (max-width:640px){body.proj main{zoom:1}}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
   <a class="brand" href="#inicio"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Laboratorio de privacidad</a>
   <span class="sim">Simulación · nada es real</span>
-  <nav aria-label="Simulaciones"><a href="#inicio">Inicio</a><a href="#rastreo">1 · Rastreo en un clic</a><a href="#truco">2 · Engaños</a><a href="#huella">3 · Huella digital</a></nav>
+  <nav aria-label="Simulaciones"><a href="#inicio">Inicio</a><a href="#rastreo">1 · Rastreo en un clic</a><a href="#truco">2 · Engaños</a><a href="#huella">3 · Huella digital</a><a href="#resumen">Mi resumen</a></nav>
+  <div class="tools"><span class="seg" role="group" aria-label="Sistema del celular simulado"><button type="button" data-os="android" aria-pressed="false">Android</button><button type="button" data-os="ios" aria-pressed="false">iPhone</button></span><button class="pbtn" type="button" data-proj aria-pressed="false" title="Atajo: tecla P">Modo proyector</button></div>
 </div></header>
 
 <main>
@@ -224,7 +385,7 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 36px;font-size:13px;color:v
   <p class="lead">Aquí te enfrentas a apps, mensajes y alertas falsas como los que existen de verdad. Tus decisiones tienen consecuencias simuladas y al final ves qué habría pasado.</p>
   <div class="hub">
     <a class="card tile" href="#rastreo"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></span><span class="tag">Rastreo</span><h3>Un clic y saben dónde estás</h3><p>Tu ubicación exacta y una cookie que reaparece aunque la borres.</p><span class="go">Empezar →</span></a>
-    <a class="card tile" href="#truco"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><span class="tag">Engaños</span><h3>Cookies, SMS y alertas falsas</h3><p>Tres trampas reales: aviso de cookies, paquete retenido y “tienes un virus”.</p><span class="go">Empezar →</span></a>
+    <a class="card tile" href="#truco"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><span class="tag">Engaños</span><h3>Cookies, SMS y alertas falsas</h3><p>Cinco trampas reales: cookies, paquete retenido, “tienes un virus”, QR falso y WiFi gratis.</p><span class="go">Empezar →</span></a>
     <a class="card tile" href="#huella"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11c0 3-1 5-2 7M8 8a4 4 0 0 1 8 2c0 2 0 4-1 6M5 11a7 7 0 0 1 12-5M4 15c.5-1.5 1-3 1-4M19 11c0 4-1 7-2 9"/></svg></span><span class="tag">Huella</span><h3>Lo que tu navegador ya dijo</h3><p>Datos reales de tu dispositivo que esta página lee sin pedirte permiso.</p><span class="go">Empezar →</span></a>
   </div>
   <div class="card" style="margin-top:14px"><h3>Cómo funciona la seguridad de esta práctica</h3><p class="small" style="margin-top:6px;font-size:15px">Las apps, marcas y números son inventados. Lo que escribas no se envía ni se guarda. Nada se instala ni se descarga. Las lecturas reales (tu ubicación, el almacenamiento del navegador y tu huella) se quedan en tu pantalla.</p></div>
@@ -235,14 +396,16 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 36px;font-size:13px;color:v
   <h2 id="t-rastreo">Un clic y te reconocen</h2>
   <p class="lead">Dos pruebas con datos reales de tu dispositivo. Lo que se lee se queda en tu pantalla y no se envía a ningún lado.</p>
   <div class="tabs" id="tabs1" role="tablist" aria-label="Pruebas"></div>
+  <ol class="pstep" id="ps-rastreo" aria-label="Pasos"></ol>
   <div id="r1body"></div>
 </section>
 
 <section id="v-truco" class="view" hidden aria-labelledby="t-truco">
   <p class="kicker">Simulación 2 · Engaños</p>
   <h2 id="t-truco">Detecta el truco</h2>
-  <p class="lead">Tres situaciones reales, una por una. Actúa como lo harías con prisa y después te mostramos dónde estaba la trampa.</p>
+  <p class="lead">Cinco situaciones reales, una por una (las dos últimas son extra). Actúa como lo harías con prisa y después te mostramos dónde estaba la trampa.</p>
   <div class="tabs" id="tabs2" role="tablist" aria-label="Escenarios"></div>
+  <ol class="pstep" id="ps-truco" aria-label="Pasos"></ol>
   <div class="cols">
     <div class="phone"><div class="screen" id="scr2"></div></div>
     <div class="stack" id="side2" aria-live="polite"></div>
@@ -253,7 +416,14 @@ footer{max-width:1100px;margin:0 auto;padding:0 16px 36px;font-size:13px;color:v
   <p class="kicker">Simulación 3 · Huella digital</p>
   <h2 id="t-huella">Lo que tu navegador ya dijo</h2>
   <p class="lead">Sin pedirte ningún permiso, esta página puede leer datos de tu dispositivo. Primero apuesta cuántos; luego los leemos de verdad.</p>
-  <div class="card" style="margin-top:20px;max-width:760px" id="h-card" aria-live="polite"></div>
+  <ol class="pstep" id="ps-huella" aria-label="Pasos"></ol>
+  <div id="h-cols"><div class="card" id="h-card" aria-live="polite"></div><div id="h-phone" hidden></div></div>
+</section>
+<section id="v-resumen" class="view" hidden aria-labelledby="t-resumen">
+  <p class="kicker">Tu resultado</p>
+  <h2 id="t-resumen">Lo que supieron de ti</h2>
+  <p class="lead">Un resumen de lo que probaste en las tres simulaciones y de lo que ya cerraste en Ajustes. Se borra al cerrar la pestaña.</p>
+  <div id="sum"></div>
 </section>
 </main>
 <footer>Privacidad para Mortales · Taller de Didáctica y Comunicación Oral · UVP. Alumnos: Jared Méndez Valencia, Miriam Pacheco Méndez, Ever García Ramírez. Marcas, personas y datos de las simulaciones son ficticios.</footer>
@@ -263,20 +433,59 @@ const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelect
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let timers=[];const later=(f,ms)=>{const t=setTimeout(f,RM?0:ms);timers.push(t);return t};
 const clearT=()=>{timers.forEach(clearTimeout);timers=[]; if(window._cd){clearInterval(window._cd);window._cd=null}};
-const VIEWS=['inicio','rastreo','truco','huella'];
+const ss={get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}}};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+
+/* ---------- sistema simulado ---------- */
+let OS=ss.get('lab-os')||((/iPhone|iPad|iPod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))?'ios':'android');
+let PROJ=ss.get('lab-proj')==='1';
+const IOS=()=>OS==='ios';
+/* ajustes simulados (práctica) y su estado */
+const S={loc:'ask',prec:true,wiped:false,tp:'allow',safe:'std',itp:false,ip:false,fpa:'std',fpi:'none'};
+const SETV={k:null,host:null,confirm:false,msg:'',cl:{hist:true,cook:true,cache:true}};
+const DONE={loc:()=>S.loc==='never',cookies:()=>S.wiped,browser:()=>IOS()?S.itp:S.tp==='block',fp:()=>IOS()?S.fpi==='all':S.fpa==='strict'};
+const SU={
+ loc:{t:'Bloquear la ubicación del navegador',path:{android:['Ajustes','Ubicación','Permisos de las apps','Chrome'],ios:['Ajustes','Privacidad y seguridad','Localización','Sitios web de Safari']},goal:{android:'Elige “No permitir”.',ios:'Elige “Nunca”.'},note:'Práctica simulada: tu celular real no cambia. Los nombres pueden variar según marca y versión.'},
+ cookies:{t:'Borrar cookies y datos de sitios',path:{android:['Chrome','Ajustes','Privacidad y seguridad','Borrar datos de navegación'],ios:['Ajustes','Safari','Borrar historial y datos de sitios web']},goal:{android:'Marca “Cookies y datos de sitios” y toca Borrar datos.',ios:'Toca “Borrar historial y datos de sitios web” y confirma.'},note:'Este borrado sí es real, pero solo sobre el ID de esta demo.'},
+ browser:{t:'Bloquear el rastreo entre sitios',path:{android:['Chrome','Ajustes','Privacidad y seguridad','Cookies de terceros'],ios:['Ajustes','Safari','Privacidad y seguridad']},goal:{android:'Elige “Bloquear cookies de terceros”.',ios:'Activa “Evitar el rastreo entre sitios”.'},note:'Práctica simulada. En tu equipo real revisa cómo están ya estos ajustes.'},
+ fp:{t:'Reducir tu huella digital',path:{android:['Firefox','Ajustes','Navegación privada y seguridad','Protección de rastreo mejorada'],ios:['Ajustes','Safari','Avanzado','Protección avanzada contra el rastreo y la huella digital']},goal:{android:'Elige “Estricta”.',ios:'Elige “Todas las navegaciones”.'},note:'Práctica simulada. Los nombres exactos cambian con la versión del sistema.'}
+};
+function closeCard(k,extra=''){const u=SU[k],done=DONE[k]();
+  return `<div class="card cl ${done?'ok':''}"><span class="tag g">Ciérralo en 1 minuto · ${IOS()?'iPhone':'Android'}</span><h3 style="margin-top:8px">${u.t}</h3><ol class="steps">${u.path[OS].map(x=>`<li>${x}</li>`).join('')}<li><b>${u.goal[OS]}</b></li></ol>${done?'<p class="okline">✓ Ajuste practicado</p>':''}<div class="btn-row"><button class="btn pri" type="button" data-open="${k}">${done?'Practicar otra vez':'Practicar en Ajustes (simulado)'}</button>${extra}</div><p class="small" style="margin-top:8px;font-size:13px">${u.note}</p></div>`}
+
+/* ---------- rutas ---------- */
+const VIEWS=['inicio','rastreo','truco','huella','resumen'];
+let CUR='inicio';
+const RENDER={inicio:()=>{},rastreo:()=>r1(),truco:()=>r2(),huella:()=>r3(),resumen:()=>rsum()};
+function render(){RENDER[CUR]();shell();steps()}
 function route(){
   let h=location.hash.replace('#','');if(h==='numero')h='huella';if(h==='celular')h='rastreo';
   if(!VIEWS.includes(h))h='inicio';
+  CUR=h;SETV.k=null;SETV.confirm=false;SETV.msg='';
   VIEWS.forEach(v=>$('#v-'+v).hidden=v!==h);
   $$('nav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+h?'page':'false'));
-  clearT();
-  if(h==='rastreo')r1(); if(h==='truco')r2(); if(h==='huella')r3();
-  window.scrollTo(0,0);
+  clearT();render();window.scrollTo(0,0);
 }
 addEventListener('hashchange',route);
+function shell(){$$('.phone').forEach(p=>{p.classList.toggle('ios',IOS());p.classList.toggle('android',!IOS())})}
+function syncTools(){$$('[data-os]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.os===OS));$$('[data-proj]').forEach(b=>b.setAttribute('aria-pressed',PROJ));document.body.classList.toggle('proj',PROJ)}
+function setOS(o){OS=o;ss.set('lab-os',o);SETV.confirm=false;SETV.msg='';L.pc=S.prec;syncTools();clearT();render()}
+function toggleProj(){PROJ=!PROJ;ss.set('lab-proj',PROJ?'1':'0');syncTools()}
+const PSTEPS={rastreo0:['Elige Android o iPhone','Toca “Ver el clima”','Responde el permiso','Mira lo que recibió el servidor','Ciérralo en Ajustes'],rastreo1:['Entra al sitio','Borra solo las cookies','Vuelve a entrar','Observa que el ID regresó','Bórralo bien en Ajustes'],truco:['Lee la misión','Actúa con prisa','Descubre la trampa','Pasa al siguiente','Revisa tu resumen'],huella:['Apuesta','Escanea','Compara','Repite tras borrar cookies','Protege tu navegador']};
+function stepIdx(){
+  if(CUR==='rastreo'){if(L.tab===0){if(SETV.k)return 4;return {idle:1,prompt:2,wait:2,err:2,ok:3}[L.st]}
+    const last=Z.log[Z.log.length-1]||'';if(SETV.k||Z.wiped)return 4;if(Z.recognized&&/Faltaba/.test(last))return 3;if(/Borraste solo/.test(last))return 2;return Z.seen?1:0}
+  if(CUR==='truco'){if(SETV.k||T.res.every(Boolean))return 4;return T.res[T.tab]?2:1}
+  if(CUR==='huella'){if(SETV.k)return 4;return {guess:0,scan:1,done:2}[H.st]}
+  return 0}
+function steps(){const el=$('#ps-'+CUR);if(!el)return;const key=CUR==='rastreo'?'rastreo'+L.tab:CUR,i=stepIdx();el.innerHTML=PSTEPS[key].map((t,k)=>`<li class="${k<i?'d':k===i?'c':''}"><b>${k+1}</b>${t}</li>`).join('')}
 
 /* ---------- piezas comunes ---------- */
-const SB=(c='#202124')=>`<div class="sb" style="color:${c}"><span>9:41</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20h20L22 4z" opacity=".9"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20l-9-11a14 14 0 0 1 18 0z"/></svg><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/></svg></span></div>`;
+const SIGN='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20h20L22 4z" opacity=".9"/></svg>';
+const WIFI='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20l-9-11a14 14 0 0 1 18 0z"/></svg>';
+const BATA='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/></svg>';
+const BATI='<svg class="bt" viewBox="0 0 28 14" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="23" height="13" rx="4" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="20" height="10" rx="2.5" fill="currentColor"/><rect x="25" y="4.5" width="2" height="5" rx="1" fill="currentColor" opacity=".5"/></svg>';
+const SB=(c='#202124')=>IOS()?`<div class="sb i" style="color:${c}"><span>9:41</span><span class="r">${SIGN}${WIFI}${BATI}</span></div>`:`<div class="sb a" style="color:${c}"><span>9:41</span><span class="r">${WIFI}${SIGN}${BATA}</span></div>`;
 const GEST=(c='#202124')=>`<div class="gest" style="color:${c}"><i></i></div>`;
 const IC={
  warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>',
@@ -284,15 +493,69 @@ const IC={
  lock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>',
  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
- user:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg>',
- bolt:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>',
- power:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3v9M6.3 6.8a8 8 0 1 0 11.4 0"/></svg>'
+ user:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0z"/></svg>'
 };
-const browserBar=(url,secure=true,closable=false)=>`<div class="bar">${closable?`<button class="xbtn" type="button" data-act="closetab" aria-label="Cerrar pestaña">${IC.x}</button>`:'<span class="xbtn" aria-hidden="true"></span>'}<div class="url">${secure?IC.lock:''}<span>${url}</span></div><span class="xbtn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div>`;
+const TI={back:'<path d="M15 5l-7 7 7 7"/>',fwd:'<path d="M9 5l7 7-7 7"/>',share:'<path d="M12 3v12M8 7l4-4 4 4M6 11H5v10h14V11h-1"/>',book:'<path d="M4 5h7v14H4zM13 5h7v14h-7z"/>',tabs:'<rect x="4" y="7" width="12" height="12" rx="2"/><path d="M8 4h11a1 1 0 0 1 1 1v11"/>'};
+const ti=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TI[k]}</svg>`;
+const notch=()=>IOS()?'<i class="island" aria-hidden="true"></i>':'<i class="punch" aria-hidden="true"></i>';
+const paint=(el,html,bg='#fff')=>{el.style.background=bg;el.innerHTML=notch()+html};
+const tabsOv=url=>`<div class="overlay tabov" style="background:${IOS()?'rgba(235,235,245,.97)':'#E9E4F1'}"><div class="tsw"><div class="tcard"><div class="th"><span>${url.split('/')[0]}</span><button class="xbtn" type="button" data-act="closetab" aria-label="Cerrar pestaña">${IC.x}</button></div><div class="tp"></div></div><button class="btn" type="button" data-act="tabs">Volver a la pestaña</button></div></div>`;
+function chrome(url,body,tabsOn){
+  const lk=IC.lock;
+  if(IOS())return `${SB()}<div class="body">${body}${tabsOn?tabsOv(url):''}</div><div class="ibar"><div class="iurl"><span class="aa">aA</span><span class="u">${lk}${url}</span><span class="aa">↻</span></div><div class="itools"><span>${ti('back')}</span><span>${ti('fwd')}</span><span>${ti('share')}</span><span>${ti('book')}</span><button type="button" data-act="tabs" aria-label="Mostrar pestañas">${ti('tabs')}</button></div></div>${GEST()}`;
+  return `${SB()}<div class="bar"><div class="url">${lk}<span>${url}</span></div><button class="xbtn tabn" type="button" data-act="tabs" aria-label="Mostrar pestañas: 1 abierta"><b>1</b></button><span class="xbtn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg></span></div><div class="body">${body}${tabsOn?tabsOv(url):''}</div>${GEST()}`;
+}
 const alertBox=(type,title,html)=>`<div class="alert ${type}"><h3>${type==='bad'?IC.warn:IC.ok}${title}</h3>${html}</div>`;
+/* pantalla de inicio del celular */
+const GL={chat:'<path d="M4 5h16v11H9l-5 4z"/>',compass:'<circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-4 0 2-6z"/>',cam:'<rect x="3" y="7" width="18" height="12" rx="3"/><circle cx="12" cy="13" r="3.2"/>',photo:'<circle cx="12" cy="12" r="3"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>',map:'<path d="M12 21s6-5.4 6-10a6 6 0 1 0-12 0c0 4.6 6 10 6 10z"/><circle cx="12" cy="11" r="2"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>'};
+function homeScr(k,msg){
+  const apps=[['Mensajes','chat','#30D158'],['Navegador','compass','#0A84FF'],['Cámara','cam','#8E8E93'],['Fotos','photo','#FF9F0A'],['Mapas','map','#34C7B3'],['Ajustes','gear','#636366',1]];
+  return `${SB('#fff')}<div class="home"><div class="apps">${apps.map(([n,g,c,a])=>{const ic=`<span class="appi" style="background:${c}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GL[g]}</svg></span>`;return a?`<button type="button" class="app act" data-open="${k}" aria-label="Abrir Ajustes">${ic}<small>${n}</small></button>`:`<div class="app">${ic}<small>${n}</small></div>`}).join('')}</div><div class="bub2">${msg}</div></div>${GEST('#fff')}`}
+
+/* ---------- motor de Ajustes simulados ---------- */
+const aTop=(t,s)=>`${SB('#1D1B20')}<div class="atop"><button class="xbtn" type="button" data-s="back" aria-label="Volver">${IC.back}</button><div><b>${t}</b>${s?`<small>${s}</small>`:''}</div></div>`;
+const aRd=(n,v,cur,l,d)=>`<button class="arow" type="button" role="radio" aria-checked="${v===cur}" data-s="set" data-n="${n}" data-v="${v}"><span class="rd ${v===cur?'on':''}"></span><span><b>${l}</b>${d?`<small>${d}</small>`:''}</span></button>`;
+const aSw=(n,on,l,d)=>`<div class="arow"><span><b>${l}</b>${d?`<small>${d}</small>`:''}</span><button class="tg" type="button" role="switch" aria-checked="${!!on}" aria-label="${l}" data-s="tog" data-n="${n}"></button></div>`;
+const aCk=(n,on,l,d)=>`<button class="arow" type="button" role="checkbox" aria-checked="${!!on}" data-s="tog" data-n="${n}"><span class="ckb ${on?'on':''}">${on?'✓':''}</span><span><b>${l}</b>${d?`<small>${d}</small>`:''}</span></button>`;
+const iTop=(b,t)=>`${SB('#000')}<div class="itop"><button class="iback" type="button" data-s="back">‹ ${b}</button><b>${t}</b><span></span></div>`;
+const iCk=(n,v,cur,l)=>`<button class="irow" type="button" role="radio" aria-checked="${v===cur}" data-s="set" data-n="${n}" data-v="${v}"><span>${l}</span>${v===cur?'<span class="ck">✓</span>':''}</button>`;
+const iSw=(n,on,l,lock)=>`<div class="irow"><span>${l}</span><button class="itg ${on?'on':''}" type="button" role="switch" aria-checked="${!!on}" aria-label="${l}" ${lock?'disabled':`data-s="tog" data-n="${n}"`}></button></div>`;
+const doneBar=k=>DONE[k]()?'<div class="donebar"><span>✓ Listo: ajuste aplicado</span><button type="button" data-s="back">Volver</button></div>':'';
+function setLoc(){
+  if(IOS())return `${iTop('Localización','Sitios web de Safari')}<div class="iscr"><div class="igh">Permitir acceso a la ubicación</div><div class="ig">${iCk('loc','never',S.loc,'Nunca')}${iCk('loc','ask',S.loc,'Preguntar la próxima vez o al compartir')}${iCk('loc','use',S.loc,'Al usar la app')}</div><div class="igh">Precisión</div><div class="ig">${iSw('prec',S.prec,'Ubicación exacta')}</div><div class="igf">Si la desactivas, solo se comparte tu ubicación aproximada.</div></div>${doneBar('loc')}`;
+  return `${aTop('Chrome','Permisos de la app · Ubicación')}<div class="ascr"><div class="ah">Acceso a la ubicación de esta app</div>${aRd('loc','always',S.loc,'Permitir siempre')}${aRd('loc','use',S.loc,'Permitir solo si la app está en uso')}${aRd('loc','ask',S.loc,'Preguntar siempre')}${aRd('loc','never',S.loc,'No permitir')}<div class="ah">Precisión</div>${aSw('prec',S.prec,'Usar ubicación precisa','Si la apagas, las apps solo ven tu zona aproximada.')}</div>${doneBar('loc')}`}
+function setCookies(){
+  const msg=SETV.msg?`<div class="snack">${SETV.msg}</div>`:'';
+  if(IOS())return `${iTop('Ajustes','Safari')}<div class="iscr">${msg}<div class="igh">Privacidad y seguridad</div><div class="ig"><button class="irow red" type="button" data-s="confirm">Borrar historial y datos de sitios web</button></div><div class="igf">Se borrarán el historial, las cookies y otros datos de navegación.</div></div>${doneBar('cookies')}${SETV.confirm?'<div class="isheet-ov"><div class="ish-body"><p>Se borrará el historial y los datos de sitios web de todos los dispositivos con tu cuenta.</p><button type="button" data-s="wipeI">Borrar historial y datos</button></div><button class="ish-c" type="button" data-s="cancel">Cancelar</button></div>':''}`;
+  return `${aTop('Borrar datos de navegación','Chrome · Básico')}<div class="ascr">${msg}<div class="ah">Intervalo de tiempo: Desde siempre</div>${aCk('cl-hist',SETV.cl.hist,'Historial de navegación')}${aCk('cl-cook',SETV.cl.cook,'Cookies y datos de sitios','Cerrará tu sesión en la mayoría de los sitios.')}${aCk('cl-cache',SETV.cl.cache,'Imágenes y archivos almacenados en caché')}<button class="abtn" type="button" data-s="wipeA">Borrar datos</button></div>${doneBar('cookies')}`}
+function setBrowser(){
+  if(IOS())return `${iTop('Ajustes','Safari')}<div class="iscr"><div class="igh">Privacidad y seguridad</div><div class="ig">${iSw('itp',S.itp,'Evitar el rastreo entre sitios')}${iSw('ip',S.ip,'Ocultar IP a rastreadores')}${iSw('x',true,'Aviso de sitio web fraudulento',true)}</div><div class="igf">Estado inicial de práctica. En tu iPhone revisa cuáles ya están activados.</div></div>${doneBar('browser')}`;
+  return `${aTop('Privacidad y seguridad','Chrome')}<div class="ascr"><div class="ah">Cookies de terceros</div>${aRd('tp','allow',S.tp,'Permitir cookies de terceros','Los anunciantes pueden seguirte entre sitios.')}${aRd('tp','inc',S.tp,'Bloquear en modo incógnito')}${aRd('tp','block',S.tp,'Bloquear cookies de terceros','Los sitios no pueden seguirte con cookies de otros dominios.')}<div class="ah">Navegación segura</div>${aRd('safe','none',S.safe,'Sin protección')}${aRd('safe','std',S.safe,'Protección estándar')}${aRd('safe','enh',S.safe,'Protección mejorada','Avisa de sitios y descargas peligrosas.')}</div>${doneBar('browser')}`}
+function setFp(){
+  if(IOS())return `${iTop('Safari','Avanzado')}<div class="iscr"><div class="igh">Protección avanzada contra el rastreo y la huella digital</div><div class="ig">${iCk('fpi','none',S.fpi,'Ninguna')}${iCk('fpi','priv',S.fpi,'Solo navegación privada')}${iCk('fpi','all',S.fpi,'Todas las navegaciones')}</div><div class="igf">Reduce los datos que tu navegador revela para identificarte.</div></div>${doneBar('fp')}`;
+  return `${aTop('Protección de rastreo','Firefox · Navegación privada y seguridad')}<div class="ascr"><div class="ah">Protección de rastreo mejorada</div>${aRd('fpa','std',S.fpa,'Estándar','Bloquea rastreadores de redes sociales y anuncios entre sitios.')}${aRd('fpa','strict',S.fpa,'Estricta','Bloquea más rastreadores y reduce tu huella digital. Algunos sitios pueden fallar.')}${aRd('fpa','custom',S.fpa,'Personalizada')}</div>${doneBar('fp')}`}
+function drawSet(){const el=$('#'+SETV.host);if(!el)return;paint(el,{loc:setLoc,cookies:setCookies,browser:setBrowser,fp:setFp}[SETV.k](),IOS()?'#F2F2F7':'#F6F2F9')}
+function openSet(k){SETV.k=k;SETV.host={rastreo:'scr1',truco:'scr2',huella:'scr3'}[CUR];SETV.confirm=false;SETV.msg='';render();const e=$('#'+SETV.host);if(e&&innerWidth<900)e.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})}
+async function sAct(b){const a=b.dataset.s,n=b.dataset.n,v=b.dataset.v;
+  if(a==='back'){SETV.k=null;SETV.confirm=false;SETV.msg='';return render()}
+  if(a==='set')S[n]=v;
+  else if(a==='tog'){if(n.startsWith('cl-'))SETV.cl[n.slice(3)]=!SETV.cl[n.slice(3)];else S[n]=!S[n]}
+  else if(a==='confirm')SETV.confirm=true;
+  else if(a==='cancel')SETV.confirm=false;
+  else if(a==='wipeA'){if(SETV.cl.cook){await zWipe();SETV.msg='Datos borrados: tu ID desapareció de los 3 lugares.'}else SETV.msg='Marca “Cookies y datos de sitios” para borrar el ID.'}
+  else if(a==='wipeI'){SETV.confirm=false;await zWipe();SETV.msg='Datos borrados.'}
+  render()}
+
+/* ---------- reinicio ---------- */
+async function resetView(v){
+  SETV.k=null;SETV.confirm=false;SETV.msg='';
+  if(v==='rastreo'||v==='all'){Object.assign(L,{st:'idle',pos:null,err:'',demo:false,blocked:false,batt:null,pc:true});S.loc='ask';S.prec=true;S.wiped=false;dc();dl();await di();Object.assign(Z,{log:[],ids:{c:null,l:null,i:null},seen:false,recognized:false,wiped:false})}
+  if(v==='truco'||v==='all'){T=mkT(T);if(T.shuf)T.order=shuffle([0,1,2,3,4]);T.tab=T.order[0];Object.assign(S,{tp:'allow',safe:'std',itp:false,ip:false})}
+  if(v==='huella'||v==='all'){Object.assign(H,{st:'guess',g:6,res:null,prev:null,same:false});S.fpa='std';S.fpi='none'}
+  render();window.scrollTo(0,0)}
 
 /* ---------- 1 · RASTREO EN UN CLIC ---------- */
-const L={st:'idle',pos:null,err:'',demo:false,mask:true,tab:0};
+const L={st:'idle',pos:null,err:'',demo:false,mask:true,tab:0,pc:true,blocked:false,batt:null};
 const Z={log:[],ids:{c:null,l:null,i:null},seen:false,recognized:false,wiped:false};
 const MP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>';
 function r1(){
@@ -303,33 +566,55 @@ function r1(){
 const mk=n=>{const s=n.toFixed(4);return L.mask?s.slice(0,-2)+'••':s};
 function viewLoc(){
   $('#r1body').innerHTML=`<div class="cols"><div class="phone"><div class="screen" id="scr1"></div></div><div class="stack" id="side1" aria-live="polite"></div></div>`;
-  drawLoc();
+  shell();drawLoc();
 }
+function locDlg(){
+  if(IOS())return `<div class="overlay" style="z-index:8"><div class="dlg i" role="alertdialog" aria-label="Permiso de ubicación"><h5>“climaya.mx” quiere usar tu ubicación actual</h5><p>Para mostrarte el clima de tu zona.</p><div class="ibtns"><button type="button" data-a1="deny">No permitir</button><button type="button" data-a1="allow">Permitir</button></div></div></div>`;
+  return `<div class="overlay" style="z-index:8"><div class="dlg" role="alertdialog" aria-label="Permiso de ubicación">${MP.replace('<svg','<svg class="dic"')}<p><b>climaya.mx</b><br>quiere conocer tu ubicación</p><div class="prec"><button type="button" aria-pressed="${L.pc}" data-a1="pc1"><div class="mm"><i style="width:12px;height:12px"></i></div>Precisa</button><button type="button" aria-pressed="${!L.pc}" data-a1="pc0"><div class="mm"><i style="width:40px;height:40px"></i></div>Aproximada</button></div><button type="button" data-a1="allow">Permitir mientras visitas el sitio</button><button class="no" type="button" data-a1="once">Permitir esta vez</button><button class="no" type="button" data-a1="deny">No permitir</button></div></div>`}
 function drawLoc(){
   const s=$('#scr1');if(!s)return;
+  if(SETV.k&&SETV.host==='scr1'){drawSet();sideLoc();return}
   const p=L.pos;
   const cta=L.st==='ok'?`<div class="wx-loc"><b>Clima en tu ubicación</b><br>24° · ${mk(p.lat)}, ${mk(p.lng)} · ±${Math.round(p.acc)} m</div>`:L.st==='wait'?`<p class="small" style="margin-top:8px">Esperando tu respuesta…</p>`:`<h4>Pronóstico exacto de tu colonia</h4><p class="small">Activa tu ubicación para ver el clima donde estás.</p><button class="wx-btn" type="button" data-a1="loc">${MP}Ver el clima de mi zona</button>${L.st==='err'?`<p class="small" style="margin-top:8px">${L.err}</p>`:''}`;
-  s.style.background='#fff';
-  s.innerHTML=`${SB()}${browserBar('climaya.mx')}<div class="body"><div class="page"><div class="wx-h">Clima<i>Ya</i></div><div class="wx-hero"><small>Hoy</small><b>24°</b><span>Parcialmente nublado</span></div><div class="wx-body">${cta}<div class="hrs">${['10','11','12','13','14','15'].map((x,k)=>`<div>${x}:00<b>${24+(k%3)}°</b></div>`).join('')}</div></div></div></div>${GEST()}`;
+  const page=`<div class="page"><div class="wx-h">Clima<i>Ya</i></div><div class="wx-hero"><small>Hoy</small><b>24°</b><span>Parcialmente nublado</span></div><div class="wx-body">${cta}<div class="hrs">${['10','11','12','13','14','15'].map((x,k)=>`<div>${x}:00<b>${24+(k%3)}°</b></div>`).join('')}</div></div></div>${L.st==='prompt'?locDlg():''}`;
+  paint(s,chrome('climaya.mx',page),'#fff');
   sideLoc();
 }
+function infer(p){const h=new Date(p.ts).getHours(),a=[];
+  a.push(p.acc<60?`Con ±${Math.round(p.acc)} m pueden ubicar tu edificio o tu salón.`:p.acc<600?`Con ±${Math.round(p.acc)} m pueden ubicar tu colonia.`:`Con ±${Math.round(p.acc)} m solo ubican tu zona general (por eso conviene la ubicación aproximada).`);
+  a.push(h>=22||h<6?'Es de noche: probablemente estás donde duermes. Repetido varios días, revela tu domicilio.':(h>=7&&h<10)||(h>=17&&h<20)?'Es hora de traslado: seguirte cada día muestra tu ruta de casa a la escuela o al trabajo.':'Es horario de clases o trabajo: repetido, revela dónde estudias o trabajas.');
+  a.push(`Con tu zona horaria (${Intl.DateTimeFormat().resolvedOptions().timeZone||'—'}) y tu idioma (${navigator.language||'—'}) ya hay un perfil: país, ciudad y hábitos.`);
+  return a}
 function sideLoc(){
   const el=$('#side1');if(!el)return;const p=L.pos;
-  if(L.st==='idle'||L.st==='wait'){el.innerHTML=`<div class="card"><p class="kicker">Tu misión</p><h3>Consulta el clima de tu zona</h3><p class="small" style="margin-top:6px;font-size:15px">Toca el botón verde. Tu navegador te preguntará si permites la ubicación. Responde como lo harías normalmente.</p><label class="chk"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Modo clase: ocultar mis coordenadas exactas</label><p class="small" style="margin-top:6px">Déjalo activado si vas a proyectar la pantalla.</p></div>`;return}
-  if(L.st==='err'){el.innerHTML=`${alertBox('good','Bien: no entregaste tu ubicación',`<p style="font-size:15px">${L.err} Si dices que no, la página no recibe nada.</p>`)}<div class="card"><p class="small" style="font-size:15px">Para ver qué habría pasado, usa una ubicación de ejemplo.</p><div class="btn-row"><button class="btn pri" type="button" data-a1="demo">Ver con ubicación de ejemplo</button><button class="btn" type="button" data-a1="retry">Intentar de nuevo</button></div></div>`;return}
-  const r=Math.min(74,14+Math.log10(p.acc+1)*18);
+  if(L.st==='idle'||L.st==='wait'||L.st==='prompt'){
+    const bl=S.loc==='never'?`<p class="small" style="margin-top:8px;font-size:14px"><b>Ajuste actual:</b> ubicación bloqueada. Toca el botón para ver qué pasa.</p>`:'';
+    el.innerHTML=`<div class="card"><p class="kicker">Tu misión</p><h3>Consulta el clima de tu zona</h3><p class="small" style="margin-top:6px;font-size:15px">Toca el botón azul. Primero verás el permiso del ${IOS()?'iPhone (Safari)':'Android (Chrome)'}; si tu navegador real también pide confirmar, es el permiso verdadero.</p>${bl}<label class="chk"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Modo clase: ocultar mis coordenadas exactas</label><p class="small" style="margin-top:6px">Déjalo activado si vas a proyectar la pantalla.</p><div class="btn-row"><button class="btn" type="button" data-a1="demo">Usar ubicación de ejemplo</button></div></div>`;return}
+  if(L.st==='err'){
+    if(L.blocked){el.innerHTML=`${alertBox('good','Tu ajuste funcionó',`<p style="font-size:15px">${L.err} La página no recibe nada: ni siquiera pudo preguntar.</p>`)}<div class="card"><div class="btn-row" style="margin-top:0"><button class="btn pri" type="button" data-a1="unblock">Quitar el bloqueo y repetir</button><button class="btn" type="button" data-a1="demo">Ver con ubicación de ejemplo</button></div></div>`;return}
+    el.innerHTML=`${alertBox('good','Bien: no entregaste tu ubicación',`<p style="font-size:15px">${L.err} Si dices que no, la página no recibe nada.</p>`)}<div class="card"><p class="small" style="font-size:15px">Para ver qué habría pasado, usa una ubicación de ejemplo.</p><div class="btn-row"><button class="btn pri" type="button" data-a1="demo">Ver con ubicación de ejemplo</button><button class="btn" type="button" data-a1="retry">Intentar de nuevo</button></div></div>`;return}
+  const r=Math.min(74,14+Math.log10(p.acc+1)*18),cn=navigator.connection||navigator.mozConnection;
   el.innerHTML=`<div class="panel"><h3>Lo que recibió el servidor de ClimaYa <span class="tag" style="background:#3a2a10;color:#FFC247">${L.demo?'ubicación de ejemplo':'datos reales tuyos'}</span></h3><div class="meta">solo se muestra aquí · no se envía a ningún servidor</div>
   <div class="radar" aria-hidden="true"><svg viewBox="0 0 300 170" preserveAspectRatio="xMidYMid meet"><g stroke="#2c3a66" stroke-width="1.5"><path d="M0 85H300M150 0V170"/><circle cx="150" cy="85" r="30" fill="none"/><circle cx="150" cy="85" r="60" fill="none"/></g><circle cx="150" cy="85" r="${r}" fill="rgba(234,67,53,.18)" stroke="#EA4335" stroke-width="2"/><circle cx="150" cy="85" r="6" fill="#EA4335"/></svg></div>
-  <div class="kv"><b>Latitud</b><span>${mk(p.lat)}</span><b>Longitud</b><span>${mk(p.lng)}</span><b>Precisión</b><span>±${Math.round(p.acc)} metros</span><b>Altitud</b><span>${p.alt!=null?Math.round(p.alt)+' m':'no informada'}</span><b>Hora</b><span>${new Date(p.ts).toLocaleTimeString()}</span></div>
+  <div class="kv"><b>Latitud</b><span>${mk(p.lat)}</span><b>Longitud</b><span>${mk(p.lng)}</span><b>Precisión</b><span>±${Math.round(p.acc)} m · ${p.precise===false?'aproximada':'exacta'}</span><b>Altitud</b><span>${p.alt!=null?Math.round(p.alt)+' m':'no informada'}</span><b>Hora</b><span>${new Date(p.ts).toLocaleTimeString()}</span><b>Zona horaria</b><span>${Intl.DateTimeFormat().resolvedOptions().timeZone||'—'}</span><b>Idioma</b><span>${navigator.language||'—'}</span><b>Red</b><span>${cn&&cn.effectiveType?cn.effectiveType:'no expuesta'}</span><b>Batería</b><span>${L.batt||'no expuesta'}</span></div>
   <label class="chk" style="color:#C8D1E8"><input type="checkbox" id="mask" ${L.mask?'checked':''}> Modo clase: ocultar coordenadas exactas</label></div>
-  ${alertBox('bad','Un solo clic fue suficiente',`<p style="font-size:15px">Si una app o página consulta esto cada día, puede deducir <b>dónde duermes, dónde estudias y por dónde pasas</b>. La precisión varía de unos metros a cientos de metros según tu dispositivo y señal.</p>`)}
-  <div class="card"><h3>Cómo revisarlo y quitarlo</h3><p class="small" style="margin-top:6px;font-size:15px"><b>Navegador:</b> candado junto a la dirección › Permisos del sitio › Ubicación › Bloquear.<br><b>Android:</b> Ajustes › Ubicación › Permisos de las apps.<br><b>iPhone:</b> Ajustes › Privacidad y seguridad › Localización.<br>Prefiere “Solo esta vez” o “Mientras la app está en uso”.</p><div class="btn-row"><button class="btn pri" type="button" data-a1="again">Repetir</button></div></div>`;
+  ${alertBox('bad','Un solo clic fue suficiente',`<p style="font-size:15px">Esto es lo que podrían deducir con tus datos:</p><ul class="clues">${infer(p).map(x=>`<li>${x}</li>`).join('')}</ul>`)}
+  ${closeCard('loc','<button class="btn" type="button" data-a1="again">Repetir</button>')}`;
 }
-function askLoc(){
-  if(!('geolocation' in navigator)){L.st='err';L.err='Este navegador no ofrece ubicación.';return drawLoc()}
-  L.st='wait';drawLoc();
-  navigator.geolocation.getCurrentPosition(g=>{L.pos={lat:g.coords.latitude,lng:g.coords.longitude,acc:g.coords.accuracy,alt:g.coords.altitude,ts:g.timestamp};L.demo=false;L.st='ok';if($('#scr1'))drawLoc()},
-   e=>{L.st='err';L.err=e.code===1?'Bloqueaste la ubicación.':e.code===3?'Se agotó el tiempo esperando la ubicación.':'No se pudo obtener la ubicación.';if($('#scr1'))drawLoc()},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+function startLoc(){
+  if(S.loc==='never'){L.st='err';L.blocked=true;L.err=IOS()?'En Ajustes › Localización › Sitios web de Safari está en “Nunca”.':'En Ajustes el permiso de ubicación de Chrome está en “No permitir”.';return drawLoc()}
+  L.blocked=false;
+  if(S.loc==='ask'){L.st='prompt';L.pc=S.prec;return drawLoc()}
+  askLoc(S.prec);
+}
+function askLoc(prec){
+  if(!('geolocation' in navigator)){L.st='err';L.blocked=false;L.err='Este navegador no ofrece ubicación.';return drawLoc()}
+  L.st='wait';L.blocked=false;drawLoc();
+  if(navigator.getBattery)navigator.getBattery().then(b=>{L.batt=Math.round(b.level*100)+'%'+(b.charging?' · cargando':'');if(L.st==='ok'&&$('#side1'))sideLoc()}).catch(()=>{});
+  navigator.geolocation.getCurrentPosition(g=>{let lat=g.coords.latitude,lng=g.coords.longitude,acc=g.coords.accuracy,alt=g.coords.altitude;
+    if(!prec){lat=Math.round(lat*100)/100;lng=Math.round(lng*100)/100;acc=Math.max(acc,1800);alt=null}
+    L.pos={lat,lng,acc,alt,ts:g.timestamp,precise:prec};L.demo=false;L.st='ok';if($('#scr1'))drawLoc()},
+   e=>{L.st='err';L.blocked=false;L.err=e.code===1?'Bloqueaste la ubicación.':e.code===3?'Se agotó el tiempo esperando la ubicación.':'No se pudo obtener la ubicación.';if($('#scr1'))drawLoc()},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
 }
 /* cookie zombie */
 const ZK='zid';
@@ -346,103 +631,143 @@ const zlog=(t,c='')=>{Z.log.push(`<div class="${c}">› ${t}</div>`)};
 async function zVisit(){
   await readZ();const {c,l,i}=Z.ids;const found=c||l||i;
   if(!found){const id=Math.random().toString(16).slice(2,6).toUpperCase()+'-'+Math.random().toString(16).slice(2,6).toUpperCase();
-    sc(id);sl(id);await si(id);Z.recognized=false;Z.seen=true;zlog(`Primera visita. Se crea el ID <b>${id}</b> y se guarda en 3 lugares.`,'o')}
+    sc(id);sl(id);await si(id);Z.recognized=false;Z.seen=true;S.wiped=false;zlog(`Primera visita. Se crea el ID <b>${id}</b> y se guarda en 3 lugares.`,'o')}
   else{const missing=[!c&&'cookie',!l&&'localStorage',!i&&'IndexedDB'].filter(Boolean);
     sc(found);sl(found);await si(found);Z.recognized=true;Z.seen=true;
     zlog(missing.length?`Faltaba: ${missing.join(', ')}. Pero otro lugar tenía el ID <b>${found}</b> y se restauró en todos.`:`Visitante recurrente: ID <b>${found}</b>.`,missing.length?'w':'o')}
-  await readZ();viewZ();
+  await readZ();render();
 }
-async function zDelCookie(){dc();zlog('Borraste solo las cookies, como haría la mayoría.');await readZ();viewZ()}
-async function zWipe(){dc();dl();await di();Z.recognized=false;Z.wiped=true;Z.log=[];zlog('Borraste cookies y datos del sitio: el ID desapareció de los 3 lugares.','o');await readZ();viewZ()}
+async function zDelCookie(){dc();zlog('Borraste solo las cookies, como haría la mayoría.');await readZ();render()}
+async function zWipe(){dc();dl();await di();Z.recognized=false;Z.wiped=true;S.wiped=true;Z.log=[];zlog('Borraste cookies y datos del sitio: el ID desapareció de los 3 lugares.','o');await readZ()}
 function viewZ(){
   const {c,l,i}=Z.ids;const row=(n,v)=>`<div class="rw"><span><b>${n}</b></span><span><span class="pill ${v?'on':'off'}">${v?'guardado':'vacío'}</span></span><code>${v||'—'}</code></div>`;
   const last=Z.log[Z.log.length-1]||'';const zombie=Z.recognized&&/Faltaba/.test(last);
-  $('#r1body').innerHTML=`<div class="card" style="margin-top:20px;max-width:820px"><p class="kicker">Cookie zombie</p><h3 style="font-size:22px">Borras la cookie… y el ID regresa</h3>
+  $('#r1body').innerHTML=`<div class="cols rev"><div class="stack"><div class="card"><p class="kicker">Cookie zombie</p><h3 style="font-size:22px">Borras la cookie… y el ID regresa</h3>
   <p class="small" style="margin-top:6px;font-size:15px">Un rastreador guarda tu ID en varios lugares del navegador. Si borras solo uno, se restaura desde otro.</p>
   <div class="btn-row"><button class="btn pri" type="button" data-z="visit">1 · Entrar al sitio</button><button class="btn" type="button" data-z="del">2 · Borrar cookies</button><button class="btn" type="button" data-z="visit">3 · Volver a entrar</button></div>
   <div class="dev" role="table" aria-label="Almacenamiento del navegador"><div class="hd"><span>Lugar</span><span>Estado</span><span>Valor</span></div>${row('Cookie',c)}${row('localStorage',l)}${row('IndexedDB',i)}</div>
   <div class="logc" aria-live="polite">${Z.log.length?Z.log.join(''):'<div>› Aún no has entrado al sitio.</div>'}</div></div>
-  ${zombie?`<div style="max-width:820px;margin-top:14px">${alertBox('bad','Te reconocieron aunque borraste las cookies',`<p style="font-size:15px">Borrar solo las cookies no basta: el ID estaba escondido en otros lugares y se restauró solo.</p>`)}</div>`:''}
-  <div class="card" style="margin-top:14px;max-width:820px"><h3>Cómo protegerte</h3><ul class="clues"><li>Borra <b>“cookies y datos de sitios”</b> juntos, no solo las cookies.</li><li>Usa protección contra rastreo del navegador (Firefox estricto, Brave, Safari) y navegación privada.</li><li>Algunos navegadores limitan el almacenamiento de sitios que no visitas seguido.</li></ul><div class="btn-row"><button class="btn pri" type="button" data-z="wipe">Borrar todo (protección)</button><a class="btn" href="#truco" style="text-decoration:none">Ir a la simulación 2</a></div></div>`;
+  ${zombie?alertBox('bad','Te reconocieron aunque borraste las cookies','<p style="font-size:15px">Borrar solo las cookies no basta: el ID estaba escondido en otros lugares y se restauró solo. Pasa lo mismo con huellas y otros rastreadores.</p>'):''}
+  ${closeCard('cookies','<button class="btn" type="button" data-z="wipe">Borrar todo (atajo)</button><a class="btn" href="#truco" style="text-decoration:none">Ir a la simulación 2</a>')}</div>
+  <div><div class="phone"><div class="screen" id="scr1"></div></div></div></div>`;
+  shell();drawZPhone();
 }
-$('#tabs1').addEventListener('click',e=>{const b=e.target.closest('[data-t1]');if(!b)return;L.tab=+b.dataset.t1;r1()});
+function drawZPhone(){const s=$('#scr1');if(!s)return;if(SETV.k&&SETV.host==='scr1')return drawSet();paint(s,homeScr('cookies','Abre <b>Ajustes</b> para borrar los datos de sitios del navegador.'),'#1b2540')}
+$('#tabs1').addEventListener('click',e=>{const b=e.target.closest('[data-t1]');if(!b)return;L.tab=+b.dataset.t1;SETV.k=null;r1();shell();steps()});
 $('#r1body').addEventListener('click',e=>{
   const b=e.target.closest('[data-a1]'),z=e.target.closest('[data-z]');
-  if(z){const a=z.dataset.z;if(a==='visit')zVisit();if(a==='del')zDelCookie();if(a==='wipe')zWipe();return}
+  if(z){const a=z.dataset.z;if(a==='visit')zVisit();if(a==='del')zDelCookie();if(a==='wipe')zWipe().then(render);return}
   if(!b)return;const a=b.dataset.a1;
-  if(a==='loc'||a==='retry')askLoc();
-  if(a==='demo'){L.pos={lat:19.0430,lng:-98.1980,acc:18,alt:2135,ts:Date.now()};L.demo=true;L.st='ok';drawLoc()}
+  if(a==='loc'||a==='retry')startLoc();
+  if(a==='pc1'){L.pc=true;drawLoc()}
+  if(a==='pc0'){L.pc=false;drawLoc()}
+  if(a==='allow'||a==='once')askLoc(IOS()?S.prec:L.pc);
+  if(a==='deny'){L.st='err';L.blocked=false;L.err='Elegiste «No permitir».';drawLoc()}
+  if(a==='unblock'){S.loc='ask';L.st='idle';L.blocked=false;drawLoc()}
+  if(a==='demo'){const pr=S.prec;L.pos={lat:pr?19.0430:19.04,lng:pr?-98.1980:-98.2,acc:pr?18:1800,alt:pr?2135:null,ts:Date.now(),precise:pr};L.demo=true;L.st='ok';drawLoc()}
   if(a==='again'){L.st='idle';L.pos=null;drawLoc();window.scrollTo(0,0)}
+  steps();
 });
 $('#r1body').addEventListener('change',e=>{if(e.target.id==='mask'){L.mask=e.target.checked;drawLoc()}});
-readZ().then(()=>{if($('#v-rastreo')&&!$('#v-rastreo').hidden&&L.tab===1)viewZ()});
+readZ().then(()=>{if(CUR==='rastreo'&&L.tab===1)render()});
 
 /* ---------- 2 · ENGAÑOS ---------- */
-const T={tab:0,res:[null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0}};
-const SC=['Cookies','SMS','Alerta falsa'];
+const SC=['Cookies','SMS','Alerta falsa','QR falso','WiFi gratis'];
+const mkT=keep=>({tab:0,tabs:false,shuf:keep?keep.shuf:false,order:[0,1,2,3,4],res:[null,null,null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0},D:{st:'cam',c:0},E:{st:'list',c:0}});
+const FR={0:()=>({st:'main',c:0,sw:[1,1,1]}),1:()=>({st:'sms',c:0}),2:()=>({st:'page',c:0}),3:()=>({st:'cam',c:0}),4:()=>({st:'list',c:0})};
+let T=mkT();
 function r2(){
   clearT();
-  $('#tabs2').innerHTML=SC.map((n,k)=>`<button type="button" role="tab" data-t="${k}" aria-selected="${k===T.tab}"><span class="st ${T.res[k]?T.res[k].ok?'good':'bad':''}">${T.res[k]?T.res[k].ok?'✓':'!':k+1}</span>${n}</button>`).join('');
-  [scrA,scrB,scrC][T.tab]();side2();
+  $('#tabs2').innerHTML=T.order.map((k,i)=>`<button type="button" role="tab" data-t="${k}" aria-selected="${k===T.tab}"><span class="st ${T.res[k]?T.res[k].ok?'good':'bad':''}">${T.res[k]?T.res[k].ok?'✓':'!':i+1}</span>${SC[k]}${k>2?'<span class="xt">extra</span>':''}</button>`).join('');
+  [scrA,scrB,scrC,scrD,scrE][T.tab]();side2();
 }
 function scrA(){
-  const a=T.A,s=$('#scr2');
-  const done=!!T.res[0];
-  let sheet='';
+  const s=$('#scr2');if(SETV.k&&SETV.host==='scr2')return drawSet();
+  const a=T.A,done=!!T.res[0];let sheet='';
   if(!done){
     if(a.st==='main')sheet=`<div class="sheet"><h4>Tu privacidad es importante</h4><p>Nosotros y nuestros socios usamos cookies para personalizar contenido y anuncios.</p><button class="cb-big" type="button" data-a2="acc">Aceptar todo</button><button class="cb-sm" type="button" data-a2="more">Más opciones</button></div>`;
     else if(a.st==='cfg'){const N=['Publicidad personalizada','Analítica y medición','Compartir con 143 socios'];sheet=`<div class="sheet"><h4>Preferencias</h4><div class="opt"><span>Cookies necesarias</span><span style="color:#80868B;font-size:12px">siempre activas</span></div>${N.map((n,k)=>`<div class="opt"><span>${n}</span><button class="tg" type="button" role="switch" aria-checked="${!!a.sw[k]}" aria-label="${n}" data-a2="tg" data-k="${k}"></button></div>`).join('')}<button class="cb-big" type="button" data-a2="save">Guardar y continuar</button><button class="cb-sm" type="button" data-a2="prov">Ver socios (143)</button></div>`}
     else sheet=`<div class="sheet"><h4>Socios (143)</h4><div class="prov">${Array.from({length:12},(_,k)=>`<div><span>Socio publicitario ${String(k+1).padStart(3,'0')}</span><span style="color:#80868B">activo</span></div>`).join('')}<div><span>…y 131 más</span><span></span></div></div><button class="cb-sm" id="hA" type="button" data-a2="rej">Rechazar todos</button><button class="cb-big" type="button" data-a2="acc" style="margin-top:6px">Aceptar todo</button></div>`;
   }
-  s.style.background='#fff';
-  s.innerHTML=`${SB()}${browserBar('noticias-del-dia.mx')}<div class="body"><div class="page"><div class="news-h">Noticias del <i>Día</i></div><div class="hero"></div><div class="art"><h4>Qué cambiará en el transporte público esta semana</h4><span></span><span style="width:92%"></span><span style="width:80%"></span><span></span><span style="width:88%"></span></div></div>${done?'':'<div class="overlay" style="z-index:4"></div>'}${sheet}</div>${GEST()}`;
+  paint(s,chrome('noticias-del-dia.mx',`<div class="page"><div class="news-h">Noticias del <i>Día</i></div><div class="hero"></div><div class="art"><h4>Qué cambiará en el transporte público esta semana</h4><span></span><span style="width:92%"></span><span style="width:80%"></span><span></span><span style="width:88%"></span></div></div>${done?'':'<div class="overlay" style="z-index:4"></div>'}${sheet}`),'#fff');
 }
 function scrB(){
-  const b=T.B,s=$('#scr2');
-  if(b.st==='web'||(T.res[1]&&b.st==='web')){
-    s.style.background='#fff';
-    s.innerHTML=`${SB()}${browserBar('rapido-express-mx.top/r/48291',true,true)}<div class="body"><div class="page"><div class="rx-h">RápidoExpress<small>Envíos</small></div><div class="rx"><h4>Reprograma tu entrega</h4><p class="small">Paquete MX48291 · sin entregar</p><div class="timer">Tiempo restante: <b id="cd2">23:59:12</b></div><form id="fk" autocomplete="off" novalidate><label for="fk1">Correo</label><input id="fk1" type="text" inputmode="email" autocomplete="off" placeholder="tu@correo.com"><label for="fk2">Contraseña de tu cuenta</label><input id="fk2" type="password" autocomplete="new-password" placeholder="••••••••"><button class="go" type="submit">Verificar y reprogramar</button></form><p class="small" style="margin-top:10px;font-size:12px">Simulación: lo que escribas no se envía ni se guarda.</p></div></div></div>${GEST()}`;
+  const s=$('#scr2');if(SETV.k&&SETV.host==='scr2')return drawSet();
+  const b=T.B;
+  if(b.st==='web'){
+    paint(s,chrome('rapido-express-mx.top/r/48291',`<div class="page"><div class="rx-h">RápidoExpress<small>Envíos</small></div><div class="rx"><h4>Reprograma tu entrega</h4><p class="small">Paquete MX48291 · sin entregar</p><div class="timer">Tiempo restante: <b id="cd2">23:59:12</b></div><form id="fk" autocomplete="off" novalidate><label for="fk1">Correo</label><input id="fk1" type="text" inputmode="email" autocomplete="off" placeholder="tu@correo.com"><label for="fk2">Contraseña de tu cuenta</label><input id="fk2" type="password" autocomplete="new-password" placeholder="••••••••"><button class="go" type="submit">Verificar y reprogramar</button></form><p class="small" style="margin-top:10px;font-size:12px">Simulación: lo que escribas no se envía ni se guarda.</p></div></div>`,T.tabs),'#fff');
+  }else if(IOS()){
+    const bub=`<div class="bub i">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div>`;
+    paint(s,`${SB()}<div class="imsg-h"><span class="iback" style="padding:6px 8px">‹</span><div class="imc"><span class="av">${IC.user}</span><small>+52 55 5550 1234 ›</small></div><span></span></div><div class="chat i"><div class="d">Hoy 9:41</div>${bub}${!T.res[1]?`<div class="isp">Este remitente no está en tus contactos.<div><button type="button" data-a2="spam">Reportar mensaje basura</button><button type="button" data-a2="nospam">Bloquear remitente</button></div></div>`:''}</div>${GEST()}`,'#fff');
   }else{
-    s.style.background='#F8F9FA';
-    s.innerHTML=`${SB()}<div class="msg-h"><span style="color:#5F6368;width:22px">${IC.back}</span><span class="av">${IC.user}</span><div><b>+52 55 5550 1234</b><small>Remitente desconocido</small></div></div>
+    paint(s,`${SB()}<div class="msg-h"><span style="color:#5F6368;width:22px">${IC.back}</span><span class="av">${IC.user}</span><div><b>+52 55 5550 1234</b><small>Remitente desconocido</small></div></div>
     ${!T.res[1]?`<div class="spamb">Este número no está en tus contactos. ¿Es spam?<div><button type="button" data-a2="spam">Es spam</button><button type="button" data-a2="nospam">No es spam</button></div></div>`:''}
-    <div class="chat"><div class="d">Hoy · 9:41</div><div class="bub">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div></div>${GEST()}`;
+    <div class="chat"><div class="d">Hoy · 9:41</div><div class="bub">RápidoExpress: su paquete MX48291 no pudo entregarse por dirección incompleta. Reprograme en 24 h o será devuelto: <a href="#" data-a2="link">https://rapido-express-mx.top/r/48291</a></div></div>${GEST()}`,'#F8F9FA');
   }
 }
 function scrC(){
-  const c=T.C,s=$('#scr2');
+  const s=$('#scr2');if(SETV.k&&SETV.host==='scr2')return drawSet();
+  const c=T.C;
   if(c.st==='scan'){
-    s.style.background='#101216';
-    s.innerHTML=`${SB('#fff')}<div class="body scan"><div style="font-size:18px;font-weight:700">Analizando dispositivo…</div><i><b></b></i><div style="color:#9AA3B5;font-size:14px">Descargando LimpiadorTotal.apk</div></div>${GEST('#fff')}`;
+    paint(s,`${SB('#fff')}<div class="body scan"><div style="font-size:18px;font-weight:700">Analizando dispositivo…</div><i><b></b></i><div style="color:#9AA3B5;font-size:14px">Descargando ${IOS()?'LimpiadorTotal.ipa':'LimpiadorTotal.apk'}</div></div>${GEST('#fff')}`,'#101216');
     later(()=>{T.res[2]={ok:false,how:'cleaned'};T.C.st='page';r2()},2600);return;
   }
-  const done=!!T.res[2];
-  s.style.background='#fff';
-  s.innerHTML=`${SB()}${browserBar('peliculas-hd-gratis.xyz',true,!done)}<div class="body"><div class="page"><div class="news-h" style="font-family:system-ui;color:#5F6368">Cargando película…</div><div class="hero" style="background:#222"></div></div>${done?'':`<div class="scare" role="alert"><div style="font-size:42px" aria-hidden="true">⚠</div><div class="big">¡ADVERTENCIA DE SEGURIDAD!</div><div>Su dispositivo está INFECTADO con 3 virus</div><div class="tm" id="cd">00:59</div><ul><li>▸ Troyano.Android.Banker</li><li>▸ Spyware de fotos y contactos</li><li>▸ Pérdida de datos inminente</li></ul><button class="fix" type="button" data-a2="fix">ELIMINAR VIRUS AHORA</button></div>`}</div>${GEST()}`;
+  const done=!!T.res[2],os=IOS()?'iOS':'Android';
+  paint(s,chrome('peliculas-hd-gratis.xyz',`<div class="page"><div class="news-h" style="font-family:system-ui;color:#5F6368">Cargando película…</div><div class="hero" style="background:#222"></div></div>${done?'':`<div class="scare" role="alert"><div style="font-size:42px" aria-hidden="true">⚠</div><div class="big">¡ADVERTENCIA DE SEGURIDAD!</div><div>Su ${IOS()?'iPhone':'dispositivo'} está INFECTADO con 3 virus</div><div class="tm" id="cd">00:59</div><ul><li>▸ Troyano.${os}.Banker</li><li>▸ Spyware de fotos y contactos</li><li>▸ Pérdida de datos inminente</li></ul><button class="fix" type="button" data-a2="fix">ELIMINAR VIRUS AHORA</button></div>`}`,T.tabs&&!done),'#fff');
   if(!done){let t=59;window._cd=setInterval(()=>{t=t>0?t-1:59;const e=$('#cd');if(e)e.textContent='00:'+String(t).padStart(2,'0')},1000)}
 }
-const RV={
- 0:{title:'Truco: aceptar es fácil, rechazar es difícil',clues:['El botón de aceptar es enorme y azul; “Más opciones” es diminuto y gris.','Las casillas vienen activadas desde el inicio.','“Rechazar todos” está escondido dentro de la lista de socios.'],tip:'Cuenta cuántos pasos cuesta decir que no. Si son más que para decir que sí, el diseño trabaja contra ti.'},
- 1:{title:'Truco: mensaje falso de paquetería (smishing)',clues:['Número desconocido y mensaje que no esperabas.','Urgencia: “24 h o será devuelto”.','Dominio raro (.top) que imita a una paquetería.','Te pide la contraseña de tu cuenta: ninguna paquetería lo hace.','El candado del navegador no garantiza que el sitio sea honesto.'],tip:'No toques el enlace. Entra por la app oficial o escribe tú mismo la dirección, y reporta el SMS como spam.'},
- 2:{title:'Truco: alerta falsa de virus (scareware)',clues:['Una página web no puede detectar virus en tu celular.','Cuenta regresiva y colores de alarma para presionarte.','El botón descarga una app que sí sería el malware.'],tip:'No toques nada de la alerta. Cierra la pestaña o el navegador desde el ícono ✕ de la barra.'}
-};
-function outcome(k){const r=T.res[k];if(!r)return '';const c=[T.A,T.B,T.C][k].c;
-  if(k===0)return r.how==='accept'?`Aceptaste todo con 1 clic: publicidad, analítica y 143 socios quedan autorizados.`:r.how==='save'?(r.on?`Guardaste con ${r.on} de 3 casillas activadas (${c} clics).`:`Apagaste todo y guardaste (${c} clics). Rechazar te costó ${c} clics; aceptar costaba 1.`):`Rechazaste todo, pero te costó ${c} clics. Aceptar costaba 1.`;
-  if(k===1)return r.how==='link'?(r.data?`Escribiste tu correo (${r.e} caracteres) y tu contraseña (${r.p} caracteres). En la vida real, el atacante ya los tendría.`:'Tocaste el enlace y saliste a tiempo. El sitio falso ya sabe que tu número está activo.'):r.how==='spam'?'Reportaste el mensaje sin abrir el enlace.':'Lo dejaste sin abrir. Bien, pero reportarlo como spam ayuda a todos.';
-  return r.how==='closed'?'Cerraste la pestaña sin tocar la alerta.':'Tocaste “ELIMINAR VIRUS”. En la vida real habrías descargado un archivo malicioso.';
+function fakeQR(){let s=7;const r=()=>(s=(s*1103515245+12345)&0x7fffffff)/0x7fffffff;const fd=(x,y)=>x===0||x===6||y===0||y===6||(x>=2&&x<=4&&y>=2&&y<=4);let d='';
+  for(let y=0;y<21;y++)for(let x=0;x<21;x++){let on;if(x<7&&y<7)on=fd(x,y);else if(x>13&&y<7)on=fd(x-14,y);else if(x<7&&y>13)on=fd(x,y-14);else on=r()>.5;if(on)d+=`M${x} ${y}h1v1h-1z`}
+  return `<svg viewBox="0 0 21 21" shape-rendering="crispEdges" aria-hidden="true"><path d="${d}"/></svg>`}
+function scrD(){
+  const s=$('#scr2');if(SETV.k&&SETV.host==='scr2')return drawSet();
+  const d=T.D;
+  if(d.st==='web'){
+    paint(s,chrome('parkpay-mx.top/p/0042',`<div class="page"><div class="pk-h">ParkPay<small>Estacionamiento</small></div><div class="rx pk"><h4>Pagar estacionamiento</h4><p class="small">Parquímetro 0042 · 1 hora</p><div class="timer" style="background:#E8F6F1;border-color:#B7DFD1;color:#0B5A49">Total a pagar: <b>$18.00 MXN</b></div><form id="fq" autocomplete="off" novalidate><label for="fq1">Número de tarjeta</label><input id="fq1" type="text" inputmode="numeric" autocomplete="off" placeholder="0000 0000 0000 0000"><div class="two"><div><label for="fq2">Vence</label><input id="fq2" type="text" autocomplete="off" placeholder="MM/AA"></div><div><label for="fq3">CVV</label><input id="fq3" type="text" inputmode="numeric" autocomplete="off" placeholder="000"></div></div><button class="go" type="submit">Pagar $18.00</button></form><p class="small" style="margin-top:10px;font-size:12px">Simulación: escribe números inventados. Nada se envía ni se guarda.</p></div></div>`,T.tabs),'#fff');return}
+  const chip=d.st==='chip'?(IOS()?`<div class="qchip i"><span>parkpay-mx.top</span><button type="button" data-a2="qropen">Abrir en Safari</button><button class="qx" type="button" data-a2="qrskip" aria-label="Cerrar">✕</button></div>`:`<div class="qchip a"><span>parkpay-mx.top/p/0042</span><button type="button" data-a2="qropen">Abrir enlace</button><button class="qx" type="button" data-a2="qrskip" aria-label="Cerrar">✕</button></div>`):'';
+  paint(s,`${SB('#fff')}<div class="cam"><div class="meter"><div class="lcd">PARQUÍMETRO 0042</div><button class="stk" type="button" data-a2="qr" aria-label="Escanear el código QR del sticker">PAGA AQUÍ<br>Escanea y evita la fila${fakeQR()}</button></div>${chip}<div class="camui">${d.st==='chip'?'Código detectado':'Apunta al código y toca el sticker para escanear'}</div></div>${GEST('#fff')}`,'#000');
 }
+const NETS=[['Cafe_Centro',1,3],['Cafe_Centro_FREE',0,4],['TELMEX-A1F9',1,2],['Invitados_Plaza',0,2]];
+function scrE(){
+  const s=$('#scr2');if(SETV.k&&SETV.host==='scr2')return drawSet();
+  const e=T.E;
+  if(e.st==='portal'){
+    paint(s,chrome('wifi-gratis-portal.net/login',`<div class="page"><div class="wp-h">WiFi gratis<br><small style="font:500 13px system-ui;opacity:.9">Inicia sesión para conectarte</small></div><div class="rx wp"><h4>Conéctate con tu cuenta</h4><p class="small">Usa tu cuenta de SocialNet para navegar sin límite.</p><form id="fw" autocomplete="off" novalidate><label for="fw1">Usuario o correo</label><input id="fw1" type="text" autocomplete="off" placeholder="tu@correo.com"><label for="fw2">Contraseña de SocialNet</label><input id="fw2" type="password" autocomplete="new-password" placeholder="••••••••"><button class="go" type="submit">Conectar</button></form><button class="cb-sm" type="button" data-a2="wback" style="margin-top:12px">Volver a las redes</button><p class="small" style="margin-top:10px;font-size:12px">Simulación: lo que escribas no se envía ni se guarda.</p></div></div>`,false),'#fff');return}
+  const wi=n=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10.5 10.5 0 0 1 14 0M8.5 16a5.5 5.5 0 0 1 7 0" opacity="${n>=4?1:n>=3?.8:.5}"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg>`;
+  paint(s,`${SB()}<div class="wf"><h4>Wi-Fi</h4><div class="poster"><b>Cafe Centro</b> · Red del local: <b>Cafe_Centro</b>. La contraseña viene en tu ticket.</div>${NETS.map(([n,sec,q])=>`<button class="wfr" type="button" data-a2="${n==='Cafe_Centro'?'wsec':'wopen'}">${wi(q)}<span><b>${n}</b><small>${sec?'Protegida con contraseña':'Abierta · sin contraseña'}</small></span>${sec?`<span style="margin-left:auto;display:grid">${IC.lock}</span>`:''}</button>`).join('')}</div>${GEST()}`,IOS()?'#F2F2F7':'#F6F2F9');
+}
+const RV={
+ 0:{title:'Truco: aceptar es fácil, rechazar es difícil',clues:['El botón de aceptar es enorme y azul; “Más opciones” es diminuto y gris.','Las casillas vienen activadas desde el inicio.','“Rechazar todos” está escondido dentro de la lista de socios.'],tip:()=>`Cuenta cuántos pasos cuesta decir que no. Si son más que para decir que sí, el diseño trabaja contra ti. ${IOS()?'En Safari: Ajustes › Safari › Evitar el rastreo entre sitios.':'En Chrome: Ajustes › Privacidad y seguridad › Cookies de terceros.'}`},
+ 1:{title:'Truco: mensaje falso de paquetería (smishing)',clues:['Número desconocido y mensaje que no esperabas.','Urgencia: “24 h o será devuelto”.','Dominio raro (.top) que imita a una paquetería.','Te pide la contraseña de tu cuenta: ninguna paquetería lo hace.','El candado del navegador no garantiza que el sitio sea honesto.'],tip:()=>`No toques el enlace. Entra por la app oficial o escribe tú mismo la dirección. ${IOS()?'Usa “Reportar mensaje basura” bajo el mensaje.':'Mantén pulsado el mensaje y elige “Denunciar spam”.'}`},
+ 2:{title:'Truco: alerta falsa de virus (scareware)',clues:['Una página web no puede detectar virus en tu celular.','Cuenta regresiva y colores de alarma para presionarte.','El botón descarga una app que sí sería el malware.'],tip:()=>`No toques nada de la alerta. ${IOS()?'Abre el botón de pestañas (abajo a la derecha) y cierra la pestaña con la ✕.':'Toca el contador de pestañas (arriba a la derecha) y cierra la pestaña con la ✕.'}`},
+ 3:{title:'Truco: código QR falso (quishing)',clues:['El QR es un sticker pegado encima del original (se ve la esquina levantada).','Pide el número completo de la tarjeta y el CVV para un cobro pequeño.','Dominio desconocido (.top) en vez del sitio oficial del municipio.','Un QR oculta la dirección hasta que lo escaneas: por eso se usa en estafas.'],tip:()=>'Antes de escanear, revisa que el QR no sea un sticker encimado. Paga en la app oficial o con el número del parquímetro, y lee la dirección completa antes de abrirla.'},
+ 4:{title:'Truco: red WiFi abierta falsa (gemelo malvado)',clues:['Red abierta con nombre casi igual al de la oficial (“_FREE”).','Te pide iniciar sesión con tu cuenta de una red social.','Sin contraseña no hay cifrado: otros en la red podrían ver tu tráfico.'],tip:()=>`Pregunta al personal el nombre exacto de la red. Nunca inicies sesión con tus redes sociales para “conectarte”. ${IOS()?'Si te conectaste por error: Ajustes › Wi-Fi › (i) › Olvidar esta red.':'Si te conectaste por error: Ajustes › Red e internet › Wi-Fi › Olvidar.'}`}
+};
+const MISS=[['Lee las noticias','Quieres leer una nota en tu celular. El aviso de cookies tapa la página. Haz lo que harías con prisa.'],['Revisa tu mensaje nuevo','Te llega un SMS de un número que no conoces. Haz lo que harías normalmente.'],['Abre una película gratis','Abres una página de películas gratis en tu celular. Reacciona como lo harías.'],['Paga el estacionamiento','Estás por pagar el estacionamiento. En el parquímetro hay un código QR para pagar desde el celular.'],['Conéctate al WiFi','Estás en una cafetería y quieres internet sin gastar tus datos. Elige una red.']];
+function outcome(k){const r=T.res[k];if(!r)return '';const c=[T.A,T.B,T.C,T.D,T.E][k].c;
+  if(k===0)return r.how==='accept'?`Aceptaste todo con 1 clic: publicidad, analítica y 143 socios quedan autorizados.`:r.how==='save'?(r.on?`Guardaste con ${r.on} de 3 casillas activadas (${c} clics).`:`Apagaste todo y guardaste (${c} clics). Rechazar te costó ${c} clics; aceptar costaba 1.`):`Rechazaste todo, pero te costó ${c} clics. Aceptar costaba 1.`;
+  if(k===1)return r.how==='link'?(r.data?`Escribiste tu correo (${r.e} caracteres) y tu contraseña (${r.p} caracteres). En la vida real, el atacante ya los tendría.`:'Tocaste el enlace y saliste a tiempo. El sitio falso ya sabe que tu número está activo.'):r.how==='spam'?'Reportaste el mensaje sin abrir el enlace.':IOS()?'Bloqueaste al remitente sin abrir el enlace.':'Lo dejaste sin abrir. Bien, pero reportarlo como spam ayuda a todos.';
+  if(k===2)return r.how==='closed'?'Cerraste la pestaña sin tocar la alerta.':'Tocaste “ELIMINAR VIRUS”. En la vida real habrías descargado un archivo malicioso.';
+  if(k===3)return r.how==='skip'?'No abriste el enlace del QR. Bien: un QR puede llevar a un sitio falso igual que un enlace.':r.data?`Escribiste tu tarjeta (${r.n} caracteres) y el CVV (${r.v} caracteres). En la vida real, el cobro y el robo ya habrían ocurrido.`:'Abriste el enlace y saliste antes de pagar. El sitio falso ya sabe que escaneaste ese código.';
+  return r.how==='secure'?'Elegiste la red oficial con contraseña del local. Es la opción correcta.':r.how==='left'?'Entraste a la red abierta pero saliste sin escribir tus datos. Lo mejor era no conectarte.':`Escribiste usuario (${r.u} caracteres) y contraseña (${r.p} caracteres) en una página que no era del local. En la vida real, esa cuenta ya sería del atacante.`}
 function side2(){
   const el=$('#side2'),k=T.tab,r=T.res[k];
   let h='';
-  if(!r)h=`<div class="card"><p class="kicker">Tu misión</p><h3>${['Lee las noticias','Revisa tu mensaje nuevo','Abre una película gratis'][k]}</h3><p class="small" style="margin-top:6px;font-size:15px">${['Quieres leer una nota en tu celular. El aviso de cookies tapa la página. Haz lo que harías con prisa.','Te llega un SMS de un número que no conoces. Haz lo que harías normalmente.','Abres una página de películas gratis en tu celular. Reacciona como lo harías.'][k]}</p></div>`;
-  else{const d=RV[k];h=`<div class="rv">${alertBox(r.ok?'good':'bad',r.ok?'Bien hecho':'Caíste en el truco',`<p style="font-size:15px">${outcome(k)}</p>`)}<div class="card" style="margin-top:14px"><span class="tag">${d.title.split(':')[0]}</span><h3 style="margin-top:8px">${d.title.split(': ')[1]}</h3><ul class="clues">${d.clues.map(c=>`<li>${c}</li>`).join('')}</ul><div class="tip"><b>Qué hacer:</b> ${d.tip}</div><div class="btn-row">${T.res.every(Boolean)?'':`<button class="btn pri" type="button" data-next="1">Siguiente escenario</button>`}<button class="btn" type="button" data-again="${k}">Repetir</button></div></div></div>`}
-  if(T.res.every(Boolean)){const bad=T.res.filter(x=>!x.ok).length;h+=`<div class="card"><span class="tag g">Resumen</span><h3 style="margin-top:8px">${bad===0?'Los esquivaste los tres':`Caíste en ${bad} de 3`}</h3><table><tr><th>Escenario</th><th>Resultado</th></tr>${SC.map((n,i)=>`<tr><td>${n}</td><td>${T.res[i].ok?'✓ Lo detectaste':'✗ Te engañó'}</td></tr>`).join('')}</table><p style="margin-top:10px;font-weight:600">Regla común: urgencia + presión + pedir algo que no corresponde = trampa.</p><div class="btn-row"><a class="btn pri" href="#huella" style="text-decoration:none">Ir a la simulación 3</a><button class="btn" type="button" data-reset="1">Reiniciar todo</button></div></div>`}
+  if(!r)h=`<div class="card"><p class="kicker">Tu misión${k>2?' · extra':''}</p><h3>${MISS[k][0]}</h3><p class="small" style="margin-top:6px;font-size:15px">${MISS[k][1]}</p><label class="chk"><input type="checkbox" id="shuf" ${T.shuf?'checked':''}> Orden aleatorio al reiniciar</label></div>`;
+  else{const d=RV[k],nx=T.order.find(i=>!T.res[i]);h=`<div class="rv">${alertBox(r.ok?'good':'bad',r.ok?'Bien hecho':'Caíste en el truco',`<p style="font-size:15px">${outcome(k)}</p>`)}<div class="card" style="margin-top:14px"><span class="tag">${d.title.split(':')[0]}</span><h3 style="margin-top:8px">${d.title.split(': ')[1]}</h3><ul class="clues">${d.clues.map(c=>`<li>${c}</li>`).join('')}</ul><div class="tip"><b>Qué hacer:</b> ${d.tip()}</div><div class="btn-row">${nx===undefined?'':`<button class="btn pri" type="button" data-next="1">Siguiente escenario</button>`}<button class="btn" type="button" data-again="${k}">Repetir</button></div></div>${k===0?`<div style="margin-top:14px">${closeCard('browser')}</div>`:''}</div>`}
+  if(T.res.every(Boolean)){const bad=T.res.filter(x=>!x.ok).length;h+=`<div class="card"><span class="tag g">Resumen</span><h3 style="margin-top:8px">${bad===0?'Los esquivaste los cinco':`Caíste en ${bad} de 5`}</h3><table><tr><th>Escenario</th><th>Resultado</th></tr>${SC.map((n,i)=>`<tr><td>${n}</td><td>${T.res[i].ok?'✓ Lo detectaste':'✗ Te engañó'}</td></tr>`).join('')}</table><p style="margin-top:10px;font-weight:600">Regla común: urgencia + presión + pedir algo que no corresponde = trampa.</p><div class="btn-row"><a class="btn pri" href="#huella" style="text-decoration:none">Ir a la simulación 3</a><a class="btn" href="#resumen" style="text-decoration:none">Ver mi resumen</a><button class="btn" type="button" data-reset="1">Reiniciar todo</button></div></div>`}
   el.innerHTML=h;
 }
 function finishA(r){T.res[0]=r;r2()}
 $('#scr2').addEventListener('click',e=>{
   const l=e.target.closest('a[data-a2="link"]');if(l)e.preventDefault();
   const b=e.target.closest('[data-a2],[data-act]');if(!b)return;const a=b.dataset.a2||b.dataset.act;
+  if(a==='tabs'){const ok=(T.tab===1&&T.B.st==='web'&&!T.res[1])||(T.tab===2&&!T.res[2])||(T.tab===3&&T.D.st==='web'&&!T.res[3]);if(ok){T.tabs=!T.tabs;r2()}return}
+  if(a==='closetab'){T.tabs=false;
+    if(T.tab===1&&T.B.st==='web'&&!T.res[1]){T.res[1]={ok:false,how:'link',data:false};T.B.st='sms'}
+    else if(T.tab===2&&!T.res[2])T.res[2]={ok:true,how:'closed'};
+    else if(T.tab===3&&T.D.st==='web'&&!T.res[3]){T.res[3]={ok:false,how:'link',data:false};T.D.st='cam'}
+    return r2()}
   if(T.tab===0&&!T.res[0]){const A=T.A;A.c++;
     if(a==='acc')return finishA({ok:false,how:'accept'});
     if(a==='more'){A.st='cfg';return r2()}
@@ -455,27 +780,35 @@ $('#scr2').addEventListener('click',e=>{
     if(a==='spam'&&!T.res[1]){B.c++;T.res[1]={ok:true,how:'spam'};return r2()}
     if(a==='nospam'&&!T.res[1]){B.c++;T.res[1]={ok:true,how:'ignored'};return r2()}
     if(a==='link'&&!T.res[1]){B.c++;B.st='web';return r2()}
-    if(a==='closetab'&&B.st==='web'&&!T.res[1]){T.res[1]={ok:false,how:'link',data:false};B.st='sms';return r2()}
   }
-  if(T.tab===2&&!T.res[2]){
-    if(a==='closetab'){T.res[2]={ok:true,how:'closed'};return r2()}
-    if(a==='fix'){T.C.st='scan';return scrC()}
+  if(T.tab===2&&!T.res[2]&&a==='fix'){T.C.st='scan';return scrC()}
+  if(T.tab===3&&!T.res[3]){const D=T.D;
+    if(a==='qr'){D.c++;D.st='chip';return r2()}
+    if(a==='qropen'){D.c++;D.st='web';return r2()}
+    if(a==='qrskip'){T.res[3]={ok:true,how:'skip'};return r2()}
+  }
+  if(T.tab===4&&!T.res[4]){const E=T.E;
+    if(a==='wsec'){E.c++;T.res[4]={ok:true,how:'secure'};return r2()}
+    if(a==='wopen'){E.c++;E.st='portal';return r2()}
+    if(a==='wback'){T.res[4]={ok:true,how:'left'};E.st='list';return r2()}
   }
 });
 $('#scr2').addEventListener('submit',e=>{
-  e.preventDefault();if(e.target.id!=='fk'||T.res[1])return;
-  const em=$('#fk1').value.length,pw=$('#fk2').value.length;
-  T.res[1]={ok:false,how:'link',data:true,e:em,p:pw};T.B.st='sms';r2();
+  e.preventDefault();const id=e.target.id;
+  if(id==='fk'&&!T.res[1]){T.res[1]={ok:false,how:'link',data:true,e:$('#fk1').value.length,p:$('#fk2').value.length};T.B.st='sms';r2()}
+  if(id==='fq'&&!T.res[3]){T.res[3]={ok:false,how:'link',data:true,n:$('#fq1').value.length,v:$('#fq3').value.length};T.D.st='cam';r2()}
+  if(id==='fw'&&!T.res[4]){T.res[4]={ok:false,how:'portal',data:true,u:$('#fw1').value.length,p:$('#fw2').value.length};T.E.st='list';r2()}
 });
-$('#tabs2').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;T.tab=+b.dataset.t;r2()});
+$('#tabs2').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(!b)return;T.tab=+b.dataset.t;T.tabs=false;SETV.k=null;r2();steps()});
 $('#side2').addEventListener('click',e=>{
-  const n=e.target.closest('[data-next]');if(n){const nx=T.res.findIndex(x=>!x);T.tab=nx<0?0:nx;r2();return}
-  const a=e.target.closest('[data-again]');if(a){const k=+a.dataset.again;T.res[k]=null;[T.A,T.B,T.C][k].c=0;if(k===0){T.A.st='main';T.A.sw=[1,1,1]}if(k===1)T.B.st='sms';if(k===2)T.C.st='page';r2();return}
-  if(e.target.closest('[data-reset]')){Object.assign(T,{tab:0,res:[null,null,null],A:{st:'main',c:0,sw:[1,1,1]},B:{st:'sms',c:0},C:{st:'page',c:0}});r2();window.scrollTo(0,0)}
+  const n=e.target.closest('[data-next]');if(n){const nx=T.order.find(i=>!T.res[i]);if(nx!==undefined)T.tab=nx;T.tabs=false;r2();steps();return}
+  const a=e.target.closest('[data-again]');if(a){const k=+a.dataset.again;T.res[k]=null;T['ABCDE'[k]]=FR[k]();T.tabs=false;r2();steps();return}
+  if(e.target.closest('[data-reset]')){resetView('truco')}
 });
+$('#side2').addEventListener('change',e=>{if(e.target.id==='shuf')T.shuf=e.target.checked});
 
 /* ---------- 3 · HUELLA DIGITAL ---------- */
-const H={st:'guess',g:6,res:null};
+const H={st:'guess',g:6,res:null,prev:null,same:false};
 function fnv(str){let h=2166136261;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16).toUpperCase().padStart(8,'0')}
 function collect(){
   const it=[];const add=(k,v)=>it.push([k,String(v)]);
@@ -500,32 +833,65 @@ function collect(){
   let cv='No disponible';try{const c=document.createElement('canvas');c.width=220;c.height=40;const x=c.getContext('2d');x.textBaseline='top';x.font='16px Arial';x.fillStyle='#f60';x.fillRect(110,2,60,24);x.fillStyle='#069';x.fillText('Privacidad,🙂 ñ',4,6);x.strokeStyle='rgba(102,204,0,.7)';x.arc(60,20,14,0,6.28);x.stroke();cv=fnv(c.toDataURL())}catch(e){}
   add('Huella de canvas',cv);
   add('Hora local',new Date().toLocaleTimeString());
-  const id=(fnv(it.map(x=>x.join('=')).join('|')).slice(0,4)+'-'+fnv(it.map(x=>x[1]).reverse().join('~')).slice(0,4));
+  const id=(fnv(it.filter(x=>x[0]!=='Hora local'&&x[0]!=='Ventana').map(x=>x.join('=')).join('|')).slice(0,4)+'-'+fnv(it.filter(x=>x[0]!=='Hora local'&&x[0]!=='Ventana').map(x=>x[1]).reverse().join('~')).slice(0,4));
   return {it,id};
 }
+const WGT={'Idioma':2.5,'Zona horaria':3,'Pantalla':4,'Plataforma':2,'Navegador':2,'Núcleos de CPU':1.5,'Memoria RAM':1,'Pantalla táctil':.7,'Tema del sistema':.6,'Tipo de conexión':1,'Tarjeta gráfica':4,'Huella de canvas':5};
+function level(it){let s=0,t=0;for(const [k,v] of it){const w=WGT[k];if(!w)continue;t+=w;if(!/^(No expuest|No disponible|—)/.test(v))s+=w}const pct=Math.round(s/t*100);return {pct,txt:pct>=75?'Alta':pct>=45?'Media':'Baja'}}
 function r3(){
   clearT();const c=$('#h-card');
+  $('#h-cols').classList.toggle('two',H.st==='done');$('#h-phone').hidden=H.st!=='done';
   if(H.st==='guess'){
     c.innerHTML=`<p class="kicker">Paso 1 · Apuesta</p><h3 style="font-size:22px">¿Cuántos datos de tu dispositivo puede leer esta página sin pedirte permiso?</h3><div class="big" style="margin:14px 0 4px"><span id="gv">${H.g}</span></div><input type="range" id="rg" min="0" max="20" step="1" value="${H.g}" aria-label="Cantidad de datos, de 0 a 20"><div class="small" style="display:flex;justify-content:space-between"><span>0</span><span>10</span><span>20</span></div><div class="btn-row"><button class="btn pri" type="button" id="lk">Fijar y escanear</button></div>`;
     $('#rg').addEventListener('input',e=>{H.g=+e.target.value;$('#gv').textContent=H.g});
-    $('#lk').addEventListener('click',()=>{H.st='scan';r3()});
+    $('#lk').addEventListener('click',()=>{H.st='scan';r3();steps()});
   }else if(H.st==='scan'){
     c.innerHTML=`<p class="kicker">Paso 2 · Lectura real</p><h3 style="font-size:22px"><span class="spin" aria-hidden="true"></span>Leyendo tu navegador…</h3><p class="small" style="margin-top:6px">Solo se lee y se muestra aquí. No se envía a ningún servidor.</p>`;
-    later(()=>{H.res=collect();H.st='done';r3()},1100);
+    later(()=>{H.res=collect();H.same=H.prev!==null&&H.prev===H.res.id;H.prev=H.res.id;H.st='done';r3();steps()},1100);
   }else{
-    const {it,id}=H.res;const n=it.length;const d=n-H.g;
+    const {it,id}=H.res;const n=it.length;const d=n-H.g;const lv=level(it);
     c.innerHTML=`<p class="kicker">Resultado</p><div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end"><div><div class="small">Tú dijiste</div><div class="big" style="font-size:64px">${H.g}</div></div><div><div class="small">Se leyeron</div><div class="big" style="font-size:64px;color:var(--red)">${n}</div></div></div>
     <p style="margin-top:8px;font-weight:600">${d>0?`Te faltaron ${d}: sin pedir nada, esta página ya conoce ${n} datos tuyos.`:d===0?'Exacto. Sabías cuánto expone un navegador.':`Te pasaste por ${-d}, pero igual son ${n} datos.`}</p>
     <div class="fp-list" role="list">${it.map(([k,v],i)=>`<div class="fp-row" role="listitem" style="animation-delay:${RM?0:i*60}ms"><b>${k}</b><span>${v.replace(/</g,'&lt;')}</span></div>`).join('')}</div>
     <p class="small" style="margin-top:10px">Además, cualquier sitio recibe tu dirección IP al conectarse. Aquí no la mostramos.</p>
-    <div class="alert bad" style="margin-top:14px">${'<h3>'+IC.warn+'Tu huella combinada</h3>'}<p style="font-size:15px">Juntos, estos datos forman un identificador que algunos rastreadores usan para reconocerte <b>aunque borres las cookies</b>.</p></div>
+    <div class="alert bad" style="margin-top:14px"><h3>${IC.warn}Tu huella combinada</h3><p style="font-size:15px">Juntos, estos datos forman un identificador que algunos rastreadores usan para reconocerte <b>aunque borres las cookies</b>.</p></div>
     <div class="fpid" aria-label="Identificador calculado">${id}</div>
-    <div class="rv"><div class="tip"><b>Qué hacer:</b> usa un navegador con protección contra huellas (por ejemplo Firefox con protección estricta o Brave), actualiza tu navegador y evita instalar extensiones innecesarias. Para medir qué tan único eres, prueba la herramienta <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener">Cover Your Tracks</a> de la EFF (necesita internet).</div></div>
-    <div class="btn-row"><button class="btn pri" type="button" id="rp">Repetir</button><a class="btn" href="#inicio" style="text-decoration:none">Volver al inicio</a></div>`;
-    $('#rp').addEventListener('click',()=>{H.st='guess';H.res=null;r3()});
+    ${H.same?`<div class="alert bad" style="margin-top:12px"><h3>${IC.warn}El ID no cambió</h3><p style="font-size:15px">Es el mismo que en tu lectura anterior${Z.wiped?', <b>aunque borraste cookies y datos de sitios entre una y otra</b>':''}. Por eso borrar cookies no te hace anónimo.</p></div>`:H.prev&&Z.wiped?'':''}
+    <div style="margin-top:14px"><b style="font-size:15px">Qué tan fácil sería reconocerte: ${lv.txt}</b><div class="lvl" role="img" aria-label="Nivel ${lv.txt}"><i style="width:${lv.pct}%"></i></div><p class="small" style="margin-top:6px;font-size:13px">Estimación didáctica según cuántos datos distintivos se leyeron. Para una medición real usa <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener">Cover Your Tracks</a> de la EFF (necesita internet).</p></div>
+    <div class="rv"><div class="tip"><b>Prueba:</b> borra las cookies (simulación 1) o activa la protección en el celular de la derecha, y vuelve a escanear. Si el ID no cambia, la huella no depende de cookies.</div></div>
+    <div class="btn-row"><button class="btn pri" type="button" id="rp">Repetir escaneo</button><a class="btn" href="#resumen" style="text-decoration:none">Ver mi resumen</a><a class="btn" href="#inicio" style="text-decoration:none">Volver al inicio</a></div>`;
+    $('#h-phone').innerHTML=`<div class="phone"><div class="screen" id="scr3"></div></div><div style="margin-top:14px">${closeCard('fp')}</div>`;
+    shell();drawPhone3();
+    $('#rp').addEventListener('click',()=>{H.st='scan';SETV.k=null;r3();steps()});
   }
 }
-route();
+function drawPhone3(){const s=$('#scr3');if(!s)return;if(SETV.k&&SETV.host==='scr3')return drawSet();paint(s,homeScr('fp','Abre <b>Ajustes</b> para reducir los datos que tu navegador revela.'),'#1b2540')}
+
+/* ---------- RESUMEN ---------- */
+function rsum(){
+  const R=[];
+  R.push(['1 · Ubicación exacta',L.st==='ok'?`±${Math.round(L.pos.acc)} m · ${L.pos.precise===false?'aproximada':'exacta'}${L.demo?' (ejemplo)':''}`:L.st==='err'?(L.blocked?'Bloqueada en Ajustes':'No entregaste tu ubicación'):'Aún no la probaste',L.st==='ok'?(DONE.loc()?'f':'b'):L.st==='err'?'g':'p']);
+  R.push(['1 · ID de cookie zombie',Z.seen?(Z.wiped&&!Z.ids.c&&!Z.ids.l&&!Z.ids.i?'ID borrado de los 3 lugares':'ID guardado en 3 lugares'+(Z.recognized?' y restaurado':'')):'Aún no la probaste',Z.seen?(Z.wiped&&!Z.ids.c&&!Z.ids.l&&!Z.ids.i?'f':'b'):'p']);
+  const sct=['Aviso de cookies','SMS falso','Alerta de virus','QR falso','WiFi gratis'];
+  sct.forEach((n,k)=>{const r=T.res[k];R.push([`2 · ${n}${k>2?' (extra)':''}`,r?outcome(k):'Aún no lo probaste',r?(r.ok?'g':'b'):'p'])});
+  R.push(['3 · Huella digital',H.res?`${H.res.it.length} datos · ID ${H.res.id}${DONE.fp()?' · protección activada':''}`:'Aún no la probaste',H.res?(DONE.fp()?'f':'b'):'p']);
+  const bad=R.filter(r=>r[2]==='b').length,good=R.filter(r=>r[2]==='g'||r[2]==='f').length,pend=R.filter(r=>r[2]==='p').length;
+  const lab={b:['Expuesto','st-b'],g:['Evitado','st-g'],f:['Expuesto y cerrado','st-f'],p:['Pendiente','st-p']};
+  $('#sum').innerHTML=`<div class="kpis"><div class="kpi bad"><b>${bad}</b><span>expuestos sin cerrar</span></div><div class="kpi good"><b>${good}</b><span>evitados o cerrados</span></div><div class="kpi"><b>${pend}</b><span>pendientes</span></div></div>
+  <div class="card" style="margin-top:14px"><table><tr><th>Simulación</th><th>Qué pasó</th><th>Estado</th></tr>${R.map(([n,t,s])=>`<tr><td>${n}</td><td>${t}</td><td class="${lab[s][1]}">${lab[s][0]}</td></tr>`).join('')}</table></div>
+  <div class="card" style="margin-top:14px"><h3>Ajustes que practicaste (${IOS()?'iPhone':'Android'})</h3><div class="chips">${[['loc','Ubicación'],['cookies','Cookies y datos de sitios'],['browser','Antirrastreo del navegador'],['fp','Huella digital']].map(([k,n])=>`<span class="chip ${DONE[k]()?'on':''}">${DONE[k]()?'✓':'○'} ${n}</span>`).join('')}</div><div class="btn-row"><a class="btn pri" href="#rastreo" style="text-decoration:none">Volver a la simulación 1</a><a class="btn" href="#truco" style="text-decoration:none">Simulación 2</a><a class="btn" href="#huella" style="text-decoration:none">Simulación 3</a><button class="btn" type="button" data-rst="all">Reiniciar todo</button></div></div>`;
+}
+
+/* ---------- eventos globales ---------- */
+document.addEventListener('click',e=>{
+  const os=e.target.closest('[data-os]');if(os){setOS(os.dataset.os);return}
+  if(e.target.closest('[data-proj]')){toggleProj();return}
+  const rs=e.target.closest('[data-rst]');if(rs){resetView(rs.dataset.rst);return}
+  const op=e.target.closest('[data-open]');if(op){openSet(op.dataset.open);return}
+  const sa=e.target.closest('[data-s]');if(sa){sAct(sa)}
+});
+addEventListener('keydown',e=>{if((e.key==='p'||e.key==='P')&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||'')){toggleProj()}});
+syncTools();route();
 </script>
 </body>
 </html>
